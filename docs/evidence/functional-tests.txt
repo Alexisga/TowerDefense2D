@@ -1,0 +1,50 @@
+PASS RF-01: avance y distancia sobrante en esquina
+PASS RF-01/RF-11: final exacto de ruta
+PASS RF-11: escape irreversible, sin eliminacion posterior
+PASS RF-02: conteo de oleada 1
+PASS RF-02: conteo de oleada 2
+PASS RF-02: conteo de oleada 3
+PASS RF-02: conteo de oleada 4
+PASS RF-02: conteo de oleada 5
+PASS RF-02: conteo de oleada 6
+PASS RF-02: conteo de oleada 7
+PASS RF-02: conteo de oleada 8
+PASS RF-02/RF-12: ocho oleadas y cierre
+PASS RF-13: incremento de cantidad, vida y velocidad
+PASS MENU bloquea construccion
+PASS RF-03: torre basica
+PASS RF-05: descuento unico de 50
+PASS RF-04: ocupacion sin descuento
+PASS RF-04: camino, exterior y panel prohibidos
+PASS RF-03/RF-05: torre larga y descuento de 90
+PASS RF-04: saldo insuficiente sin descuento
+PASS RF-04: todas las casillas quedan fuera del camino
+PASS RF-06: excluir fuera de alcance
+PASS RF-06: incluir borde exacto
+PASS RF-07: objetivo valido mas cercano
+PASS RF-07/RF-09: ignorar eliminados
+PASS RF-07: no disparar antes del intervalo
+PASS RF-07: disparar al cumplir intervalo
+PASS RF-08: impacto aplica 12 de dano
+PASS RF-08: proyectil impacta una sola vez
+PASS RF-09: retirar proyectil sin objetivo
+PASS RF-08/RF-09: vida cero y ataque concurrente seguro
+PASS RF-12: victoria real al terminar ocho oleadas
+PASS RF-09/RF-10: retiro y recompensa unica bajo fuego de varias torres
+PASS Resultado final no sigue simulando ni recompensando
+PASS RF-15: reinicio completo tras victoria
+PASS RF-11: dano unico, sin recompensa por escape, derrota y vida no negativa
+PASS RF-15: reinicio tras derrota
+PASS Precondicion RF-14: combate en curso
+PASS RF-14: pausa conserva entidades, vida, economia y todos los temporizadores
+PASS RF-14: reanudacion
+PASS CSV: eventos de pausa y reanudacion
+PASS CSV: escape de coma, comillas y salto de linea
+PASS CSV: escritura y acumulacion
+PASS CSV: encabezado exacto sin duplicar
+PASS CSV: rechazar encabezado incompatible sin sobrescribir
+PASS CSV: error de escritura controlado
+PASS CSV: fecha ISO 8601 en UTC
+DEFAULT_CAMPAIGN state=3 life=20 kills=104 time=232.987 towers=13
+PASS Integracion: ocho oleadas con parametros reales y construccion estrategica
+RESULT 48 passed, 0 failed

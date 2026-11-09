@@ -4,4 +4,5 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="TowerDefense2D/TowerDefense2D.vcxproj" Id="075ff89f-502d-4411-a1be-d835586b1046" />
+  <Project Path="tests/TowerDefense2D.Tests.vcxproj" Id="b1a9eb39-751e-4d65-8c11-a1c2ae307a41" />
 </Solution>

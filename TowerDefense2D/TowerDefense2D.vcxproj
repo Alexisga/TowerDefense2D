@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -142,11 +142,45 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
+    </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
+    </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\src\AssetManager.cpp" />
+    <ClCompile Include="..\src\CsvLogger.cpp" />
+    <ClCompile Include="..\src\Enemy.cpp" />
+    <ClCompile Include="..\src\Game.cpp" />
+    <ClCompile Include="..\src\GameMap.cpp" />
+    <ClCompile Include="..\src\GameUI.cpp" />
+    <ClCompile Include="..\src\Projectile.cpp" />
+    <ClCompile Include="..\src\Tower.cpp" />
+    <ClCompile Include="..\src\WaveManager.cpp" />
+    <ClInclude Include="..\include\AssetManager.h" />
+    <ClInclude Include="..\include\CsvLogger.h" />
+    <ClInclude Include="..\include\Enemy.h" />
+    <ClInclude Include="..\include\Game.h" />
+    <ClInclude Include="..\include\GameMap.h" />
+    <ClInclude Include="..\include\GameTypes.h" />
+    <ClInclude Include="..\include\GameUI.h" />
+    <ClInclude Include="..\include\Projectile.h" />
+    <ClInclude Include="..\include\Tower.h" />
+    <ClInclude Include="..\include\WaveManager.h" />
   </ItemGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary Condition="'$(Configuration)'=='Release'">MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary Condition="'$(Configuration)'=='Debug'">MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link Condition="'$(Configuration)'=='Debug'">
+      <IgnoreSpecificDefaultLibraries>MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <PropertyGroup>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)..</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\raylib.6.2.0\build\native\raylib.targets" Condition="Exists('..\packages\raylib.6.2.0\build\native\raylib.targets')" />

@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-09",
+  "method": "Busqueda local automatizada de cuatro patrones; no es Gitleaks ni escaneo exhaustivo",
+  "files_scanned": 26,
+  "findings": [],
+  "csv_rows": 159,
+  "csv_columns": [
+    "fecha_hora",
+    "partida_id",
+    "tiempo_activo_s",
+    "evento",
+    "oleada",
+    "vida_base",
+    "monedas",
+    "enemigos_eliminados",
+    "resultado",
+    "detalle"
+  ],
+  "csv_event_types": [
+    "BASE_DAÑADA",
+    "ENEMIGO_ELIMINADO",
+    "INICIO_OLEADA",
+    "INICIO_PARTIDA",
+    "PARTIDA_FINALIZADA",
+    "PAUSA",
+    "REANUDACION",
+    "TORRE_CONSTRUIDA"
+  ],
+  "scope": "include, src, main.cpp, README, .gitignore, docs/*.md y muestra CSV; no revisa credenciales del sistema ni historial remoto"
+}
