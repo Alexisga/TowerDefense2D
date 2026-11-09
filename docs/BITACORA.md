@@ -28,3 +28,12 @@
 - Recorrido nativo de Windows por herramientas de Codex: Jugar, tarjeta, construcción y pausa. Se detectó escritura de CSV relativa a un directorio no escribible al lanzar desde otra aplicación. Se corrigió main para ubicar el directorio en la raíz del proyecto o junto al EXE distribuido; la segunda ejecución escribió eventos correctamente.
 - Pausa y reanudación verificadas en la ejecución real: ambas filas con tiempo activo 68,341 s. Capturas 09–11 conservan el recorrido de interfaz; no se atribuyen como pruebas manuales del estudiante.
 - CSV leído mediante parser de Python: 159 filas de muestra, diez columnas y los ocho eventos. Búsqueda local de cuatro patrones de secretos: cero hallazgos en el alcance indicado por security-and-csv.json. No equivale a Gitleaks ni a un análisis exhaustivo.
+
+## Documentación y entrega
+
+- APF2 editable actualizado solo en los apartados 8–10, con nueva paginación del índice. Se conservaron los 16 recursos originales byte a byte, 295 nodos anteriores y 37 posteriores al bloque sustituido. Las secciones 11 y 12 siguen como fichas originales para el cierre posterior.
+- Documento final de 68 páginas. Conversión por Microsoft Word mediante API COM y rasterizado con Poppler: las primeras 54 páginas son idénticas al original salvo la página 3, donde se corrigieron únicamente los números del índice. Páginas renderizadas inspeccionadas; se corrigieron párrafos aislados y una cabecera de tabla sin su primera fila en la paginación nueva.
+- El renderizador habitual render_docx.py no encontró LibreOffice en Windows. Se usó Word instalado para la conversión de documentos; no se instaló software ni se sustituyó el original por un documento reconstruido.
+- Código formateado con clang-format de Visual Studio para facilitar lectura. Debug, Release y las 48 comprobaciones se repitieron después del formato: correctos, sin advertencias.
+- Carpeta local output/PC3 preparada con ejecutable Release. Se abrió desde esa carpeta y se comprobó la creación de su propio data/eventos.csv. No requiere descargar sprites ni acceder a Internet para jugar.
+- Word original de OneDrive actualizado con la copia final revisada; coincidencia SHA-256 comprobada. Su versión inicial íntegra se conserva en docs/backup/APF2_Tower_Defense_original_2026-11-09.docx, excluida de Git.

@@ -18,6 +18,8 @@ Repositorio oficial **privado**: https://github.com/Alexisga/TowerDefense2D. Los
 
 No se requiere conexión de red para jugar. Windows debe disponer del runtime Microsoft Visual C++ 2015–2026 x64, normalmente presente al instalar Visual Studio. El ejecutable usa `/MD`; la edición Debug requiere las bibliotecas de depuración de Visual Studio. La distribución local utiliza Release.
 
+Para preparar la carpeta de entrega después de compilar Release, ejecutar `.\tools\package.ps1`. El resultado queda en `output/PC3`; se puede abrir su EXE directamente. Esa copia crea sus registros junto al ejecutable y no necesita el resto del proyecto para jugar.
+
 Los sprites temporales se generan al iniciar; no se necesitan archivos de texturas externos. Georgia y Segoe UI se usan si existen en Windows; hay fuente de reserva de Raylib. No se redistribuyen las fuentes de Microsoft.
 
 ## Jugar
@@ -43,6 +45,8 @@ Desde PowerShell en la raíz:
 La batería lógica usa los mismos módulos que el juego y devuelve un código distinto de cero si falla. Las capturas usan un contexto OpenGL real; victoria y derrota se alcanzan por simulación con configuraciones de prueba identificadas en `tests/tests.cpp`. El benchmark muestra 70 enemigos de vida alta y 13 torres durante 1.920 cuadros (120 de calentamiento, 1.800 medidos), a resolución 1280 × 720 y MSAA x4. Guarda tiempos crudos y resumen en `docs/evidence/`. No mide latencia física de entrada ni equivale a una prueba del laboratorio.
 
 Resultados y límites: [informe de validación](docs/VALIDACION.md). Registro permanente: [bitácora](docs/BITACORA.md). Decisiones y mapa de requisitos: [trazabilidad](docs/TRAZABILIDAD.md).
+
+Documento académico: [APF2 actualizado hasta el apartado 10](docs/APF2_Tower_Defense_actualizado.docx), 68 páginas. Se preservan los apartados 1–7 y los recursos originales; se actualiza la paginación del índice. Los apartados 11–12 mantienen las fichas originales para el cierre posterior.
 
 ## Estructura
 

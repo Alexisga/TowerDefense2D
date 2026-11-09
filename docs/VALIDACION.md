@@ -5,7 +5,7 @@ Fecha: 2026-11-09. Ejecución automatizada por Codex, bajo solicitud de Kevin. N
 ## Compilación y funcionalidad
 
 - Visual Studio 2026 Community, MSBuild 18.10.1, MSVC v145, Windows x64, C++20 y NuGet raylib 6.2.0.
-- Debug x64 y Release x64 compilados y enlazados realmente. Registros locales `docs/evidence/build-debug.log` y `build-release.log` (excluidos de Git por ser artefactos de compilación).
+- Debug x64 y Release x64 compilados y enlazados realmente, sin advertencias ni errores en las compilaciones finales. Registros `docs/evidence/build-debug.log` y `build-release.log`, versionados como evidencias explícitas.
 - 48 comprobaciones funcionales aprobadas, cero fallidas. Se ejecutan los mismos módulos del juego, sin mocks de las reglas. Véase `evidence/functional-tests.txt` y `tests/tests.cpp`.
 - Campaña con parámetros predeterminados: ocho oleadas, victoria, 104 eliminaciones, 20 de vida, trece torres y 232,987 s de tiempo simulado. La simulación se ejecuta sin esperar ese tiempo real; una estrategia automática construye torres de largo alcance en casillas permitidas al disponer de monedas.
 - Los escenarios de victoria y derrota destinados a capturas usan parámetros controlados para llegar al resultado; son distintos de la campaña predeterminada y no prueban por sí solos el equilibrio de dificultad.
@@ -19,7 +19,7 @@ El recorrido adicional de interfaz se realizó con la herramienta de control de 
 
 ## Rendimiento local medido
 
-Equipo: Intel Core i5-13400F (10 núcleos, 16 hilos), NVIDIA GeForce RTX 3060. Resolución 1280 × 720, MSAA x4, objetivo de 60 FPS. Se midieron 1.800 cuadros tras 120 de calentamiento, con un mínimo de 83 entidades simultáneas. El escenario mantiene 70 enemigos de vida alta y trece torres, además de proyectiles.
+Equipo: Intel Core i5-13400F (10 núcleos, 16 hilos), NVIDIA GeForce RTX 3060. Resolución 1280 × 720, MSAA x4, objetivo de 60 FPS. Ejecutable de pruebas optimizado con /O2 y /MD, que compila los mismos módulos de src/ que el juego. Se midieron 1.800 cuadros tras 120 de calentamiento, con un mínimo de 83 entidades simultáneas. El escenario mantiene 70 enemigos de vida alta y trece torres, además de proyectiles.
 
 | Medida | Resultado |
 |---|---:|

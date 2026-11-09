@@ -1,0 +1,41 @@
+{
+  "source": "C:\\Users\\User\\OneDrive\\Escritorio\\7mo ciclo\\Programación de Videojuegos con C++\\Proyecto\\APF2\\APF2_Tower_Defense.docx",
+  "output": "C:\\Users\\User\\source\\repos\\TowerDefense2D\\docs\\APF2_Tower_Defense_actualizado.docx",
+  "unchanged_prefix_nodes": 295,
+  "unchanged_suffix_nodes": 37,
+  "original_media_preserved": 16,
+  "new_body_nodes": 85,
+  "section_break_preserved": true,
+  "navigation_page_numbers_updated": [
+    {
+      "heading": "8. Código y documentación por Sprint",
+      "old": "55",
+      "new": "55"
+    },
+    {
+      "heading": "9. GitHub y control de versiones",
+      "old": "56",
+      "new": "61"
+    },
+    {
+      "heading": "10. Seguridad de credenciales",
+      "old": "57",
+      "new": "63"
+    },
+    {
+      "heading": "11. Stoppers, bugs y soluciones",
+      "old": "59",
+      "new": "65"
+    },
+    {
+      "heading": "12. Evidencias, conclusiones y cierre",
+      "old": "61",
+      "new": "67"
+    }
+  ],
+  "source_backup": "C:\\Users\\User\\source\\repos\\TowerDefense2D\\docs\\backup\\APF2_Tower_Defense_original_2026-11-09.docx",
+  "source_sha256": "f9971195fb2d804b1adc925323e42dd63ab63e1d76d6e35807db1d3d00db5801",
+  "output_sha256": "5978118a10b4a6e953592b572dacc601c0263d1aaa3d42f700e9b8607d13c162",
+  "rendered_pages": 68,
+  "visual_review": "68 páginas renderizadas inspeccionadas. Sin nuevas alteraciones en 1–7; índice general repaginado; 8–10 revisados e iterados."
+}
