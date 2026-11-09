@@ -18,7 +18,10 @@ props=ET.Element(q('ItemDefinitionGroup'))
 cc=ET.SubElement(props,q('ClCompile'))
 ET.SubElement(cc,q('AdditionalIncludeDirectories')).text='$(ProjectDir)..\\include;%(AdditionalIncludeDirectories)'
 ET.SubElement(cc,q('AdditionalOptions')).text='/utf-8 %(AdditionalOptions)'
-ET.SubElement(cc,q('RuntimeLibrary')).text='MultiThreadedDLL'
+ET.SubElement(cc,q('RuntimeLibrary'),Condition="'$(Configuration)'=='Release'").text='MultiThreadedDLL'
+ET.SubElement(cc,q('RuntimeLibrary'),Condition="'$(Configuration)'=='Debug'").text='MultiThreadedDebugDLL'
+link=ET.SubElement(props,q('Link'),Condition="'$(Configuration)'=='Debug'")
+ET.SubElement(link,q('IgnoreSpecificDefaultLibraries')).text='MSVCRT;%(IgnoreSpecificDefaultLibraries)'
 root.insert(-3,props)
 work=ET.Element(q('PropertyGroup'))
 ET.SubElement(work,q('LocalDebuggerWorkingDirectory')).text='$(ProjectDir)..'

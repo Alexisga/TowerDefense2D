@@ -18,6 +18,20 @@ void GameUI::Button(const AssetManager& a,Rectangle r,const std::string& text,Co
 void GameUI::Draw(const AssetManager& a,const UiSnapshot& u) const {
     DrawRectangleLinesEx({7,7,1266,706},1,gold);
     if(u.state==GameState::MENU) {
+        DrawRectangle(8,8,1264,704,Color{49,80,48,255});
+        for(int i=0;i<90;++i){
+            float x=static_cast<float>(15+(i*173)%1250),y=static_cast<float>(30+(i*91)%680);
+            DrawEllipse(static_cast<int>(x),static_cast<int>(y),36,19,Color{69,97,51,90});
+        }
+        const Vector2 road[]={{8,238},{250,238},{250,448},{1040,448},{1040,315}};
+        for(int i=1;i<5;++i){DrawLineEx(road[i-1],road[i],80,Color{165,140,82,255});DrawCircleV(road[i],40,Color{165,140,82,255});}
+        for(int i=0;i<22;++i){
+            float x=static_cast<float>(i*62);
+            a.Sprite("tree",{x,105+static_cast<float>((i*19)%65)},1.25f);
+            a.Sprite("tree",{x,735+static_cast<float>((i*13)%40)},1.5f);
+        }
+        for(int i=0;i<6;++i){a.Sprite("tree",{52,250+static_cast<float>(i*70)},1.2f);a.Sprite("tree",{1230,210+static_cast<float>(i*80)},1.2f);}
+        a.Sprite("castle",{1080,355},1.8f);
         DrawRectangle(0,0,1280,720,Color{9,20,13,120});
         Panel({362,154,556,418},panel,true);
         DrawCircle(640,186,45,gold);DrawCircle(640,186,39,Color{66,57,36,255});
@@ -60,7 +74,7 @@ void GameUI::Draw(const AssetManager& a,const UiSnapshot& u) const {
     a.Text("una casilla libre fuera del camino.",{945,613},14,muted);
     Panel({24,667,1232,35},Color{35,30,23,255});
     const Color status=u.error?Color{238,109,82,255}:light;
-    a.Text(u.error?"!":"◇",{36,673},18,status);
+    a.Text(u.error?"!":"*",{36,673},18,status);
     a.Text(u.message,{62,674},15,status);
     a.Text("1 / 2: torre   Esc: cancelar   P: pausa",{944,652},11,muted);
     if(u.state==GameState::ACTIVA) {

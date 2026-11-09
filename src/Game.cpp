@@ -60,7 +60,8 @@ void Game::Update(float dt){
     if(life_==0)Finish(GameState::DERROTA);else if(waves_.Finished(enemies_.empty()))Finish(GameState::VICTORIA);
 }
 void Game::Finish(GameState s){state_=s;selected_=false;error_=s==GameState::DERROTA;message_=error_?"La fortaleza ha caído.":"¡Todas las oleadas han sido superadas!";Log("PARTIDA_FINALIZADA","",error_?"DERROTA":"VICTORIA");}
-void Game::Draw(){
+void Game::Draw(){Draw(GetMousePosition());}
+void Game::Draw(Vector2 pointer){
     ClearBackground(Color{23,32,23,255});map_.Draw(assets_);
     for(const auto& t:towers_)t.Draw(assets_);
     for(const auto& e:enemies_)e.Draw(assets_,activeTime_);
@@ -69,7 +70,7 @@ void Game::Draw(){
     if(state_==GameState::ACTIVA && messageTime_<=0){
         error=false;message="Selecciona una torre y una casilla libre.";
         if(selected_){
-            auto p=GetMousePosition();int slot=map_.SlotAt(p);
+            auto p=pointer;int slot=map_.SlotAt(p);
             if(CheckCollisionPointRec(p,{24,112,888,536})){
                 bool valid=slot>=0&&!Occupied(slot)&&coins_>=Stats(selection_).cost;
                 Vector2 center=slot>=0?map_.BuildSlots()[slot]:p;

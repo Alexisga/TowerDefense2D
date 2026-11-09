@@ -14,6 +14,7 @@ public:
     void Update();
     void Update(float dt);
     void Draw();
+    void Draw(Vector2 pointer);
     void Start();
     bool SelectTower(TowerType type);
     bool TryBuild(Vector2 position);
