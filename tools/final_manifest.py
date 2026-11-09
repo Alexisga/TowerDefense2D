@@ -1,6 +1,5 @@
 from pathlib import Path
-import hashlib,json
-from docx import Document
+import hashlib,json,zipfile
 from pypdf import PdfReader
 root=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -13,6 +12,9 @@ reportpath.write_text(json.dumps(r,ensure_ascii=False,indent=2),encoding='utf-8'
 report=json.loads((root/'docs/evidence/document-render-check.json').read_text())
 assert report['changed_preserved_pages']==[3]
 assert report['updated_pages']==68
-assert len(Document(source).inline_shapes)==16
+with zipfile.ZipFile(source) as a,zipfile.ZipFile(updated) as b:
+    media=[p for p in a.namelist() if p.startswith('word/media/')]
+    assert len(media)==16
+    assert all(a.read(p)==b.read(p) for p in media)
 assert 'RESULT 48 passed, 0 failed' in (root/'docs/evidence/functional-tests.txt').read_text(encoding='utf-8')
 print('FINAL_MANIFEST_OK: 68 paginas; 16 recursos originales; 48 comprobaciones aprobadas')

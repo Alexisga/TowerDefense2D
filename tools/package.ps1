@@ -5,6 +5,7 @@ if(-not (Test-Path -LiteralPath $exe)){throw 'Compila Release x64 antes de prepa
 $out=Join-Path $root 'output\PC3'
 New-Item -ItemType Directory -Force -Path (Join-Path $out 'data') | Out-Null
 Copy-Item -LiteralPath $exe -Destination (Join-Path $out 'TowerDefense2D.exe') -Force
+Copy-Item -LiteralPath (Join-Path $root 'README.md') -Destination (Join-Path $out 'README.md') -Force
 Copy-Item -LiteralPath (Join-Path $root 'packages\raylib.6.2.0\build\native\LICENSE') -Destination (Join-Path $out 'LICENSE-raylib.txt') -Force
 @'
 TowerDefense2D - avance PC3

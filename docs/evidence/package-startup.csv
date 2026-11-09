@@ -1,0 +1,3 @@
+fecha_hora,partida_id,tiempo_activo_s,evento,oleada,vida_base,monedas,enemigos_eliminados,resultado,detalle
+2026-11-09T22:26:54Z,17942632144135288-1,0.000,INICIO_PARTIDA,0,20,180,0,,
+2026-11-09T22:26:59Z,17942632144135288-1,5.001,INICIO_OLEADA,1,20,180,0,,
