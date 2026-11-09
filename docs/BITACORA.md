@@ -9,3 +9,12 @@
 - Los valores de los mockups no son parámetros aprobados. Se adoptan como punto de partida y se documentará la calibración.
 - Desarrollo y pruebas ejecutados por Codex mediante herramientas bajo solicitud de Kevin. No se atribuyen aportes ni aprobaciones a Naomy o Diego.
 - Se trabajará en develop y se integrará en main tras las comprobaciones. No se presume protección de ramas ni revisión humana.
+
+## Incremento integrado de mecánicas e interfaz
+
+- Nueve clases en include/ y src/, GameTypes.h como definiciones auxiliares. main conserva exclusivamente inicialización, entrada, actualización, dibujo y cierre.
+- Game integra estados, economía y eventos; Enemy consume la distancia sobrante al pasar un waypoint. Tower resuelve el objetivo más cercano y Projectile lo sigue mediante un ID estable.
+- GameMap usa trece casillas explícitas fuera del camino; se rechazan ruta, exteriores, ocupación y saldo insuficiente antes de cobrar.
+- AssetManager crea texturas de sprites independientes temporales; GameUI dibuja controles reales, HUD, menú y resultados. Exportaciones de Figma pendientes.
+- Compilación Debug x64 real mediante MSBuild 18: correcta. Se corrigió el conflicto de runtime de la biblioteca NuGet usando /MD también en Debug. Pendiente recompilar tras quitar una advertencia de conversión.
+- Repositorio privado creado y verificado: https://github.com/Alexisga/TowerDefense2D (propietario Alexisga, permisos de administrador verificados por API). La autenticación no se incluye en los archivos.

@@ -1,24 +1,27 @@
 
-#include "raylib.h"
+#include "Game.h"
+#include <algorithm>
 
 int main()
 {
-    // Crear la ventana del videojuego
+    SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(1280, 720, "Tower Defense 2D");
 
-    // Establecer un objetivo de 60 FPS
+    SetExitKey(KEY_NULL); // Esc cancela la construcción; la X cierra la ventana.
     SetTargetFPS(60);
 
-    // Bucle principal del videojuego
-    while (!WindowShouldClose())
     {
-        BeginDrawing();
-
-        ClearBackground(DARKGREEN);
-        DrawText("TOWER DEFENSE 2D", 420, 280, 40, GOLD);
-        DrawText("Raylib funcionando correctamente", 400, 350, 24, RAYWHITE);
-
-        EndDrawing();
+        Game game;
+        game.LoadAssets();
+        while (!WindowShouldClose())
+        {
+            game.HandleInput();
+            // Limitar saltos tras mover o detener la ventana.
+            game.Update(std::min(GetFrameTime(), 0.1f));
+            BeginDrawing();
+            game.Draw();
+            EndDrawing();
+        }
     }
 
     // Cerrar la ventana
