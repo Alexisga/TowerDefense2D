@@ -37,3 +37,28 @@
 - Código formateado con clang-format de Visual Studio para facilitar lectura. Debug, Release y las 48 comprobaciones se repitieron después del formato: correctos, sin advertencias.
 - Carpeta local output/PC3 preparada con ejecutable Release. Se abrió desde esa carpeta y se comprobó la creación de su propio data/eventos.csv. No requiere descargar sprites ni acceder a Internet para jugar.
 - Word original de OneDrive actualizado con la copia final revisada; coincidencia SHA-256 comprobada. Su versión inicial íntegra se conserva en docs/backup/APF2_Tower_Defense_original_2026-11-09.docx, excluida de Git.
+
+## Revisión estética posterior — 9 de noviembre de 2026
+
+- Solo se modificó el proyecto original; el Word y los archivos externos permanecieron sin cambios durante esta revisión. No se hicieron commits ni publicaciones en GitHub.
+- Se inspeccionó el Figma original por integración y se exportaron 23 PNG RGBA individuales: sprites, iconos, cursor, adornos y capas del mapa. Se integraron las fuentes Cinzel e Inter con sus licencias OFL. Los dibujos procedurales anteriores se conservan como reserva.
+- Se corrigieron centrado mediante ancho medido, tamaño y métrica de fuentes, jerarquía, tarjetas, columnas, proporciones, bordes y avisos. Menú/resultados usan emblemas originales aproximados por código; los faltantes se declaran en el informe.
+- Debug y Release x64 compilados sin advertencias ni errores; 48 comprobaciones funcionales y 7 gráficas aprobadas. Campaña predeterminada sin cambios de resultado. Auditoría de ocho regiones centradas, 23 PNG y conservación del código lógico: correcta.
+- Rendimiento nuevo: 59,7141 FPS medios, 83 entidades mínimas, p99 17,2678 ms y máximo 97,5616 ms. La evidencia inicial se conserva y la nueva queda en `docs/evidence/visual/`.
+- Recorrido nativo del EXE Release: JUGAR, selección, construcción, rechazo, PAUSA y REANUDAR. CSV generado; primer par de pausa/reanudación con tiempo activo idéntico de 26,137 s. El paquete existente `output/PC3` incluye los 33 archivos de recursos verificados por hash.
+- Informe final A–G en [REVISION_VISUAL.md](REVISION_VISUAL.md); ocho vistas comparadas con las referencias en [comparacion.html](evidence/visual/comparacion.html). No se afirma fidelidad artística exacta ni medición de latencia física.
+
+## Corrección del inicio desde la solución — 9 de noviembre de 2026
+
+- La captura del usuario mostraba `ASSET: 0/23` al iniciar desde Visual Studio. La compilación de la solución sitúa el EXE un nivel más arriba que la compilación directa del proyecto; main asumía tres niveles fijos y no encontraba los recursos.
+- Se corrigió la localización de la raíz sin una profundidad fija, manteniendo los recursos y datos propios del paquete distribuido. No se modificaron reglas de juego.
+- Se compilaron Debug y Release x64 desde `TowerDefense2D.slnx`, sin advertencias ni errores. El EXE Debug de esa ubicación se abrió realmente y cargó los 23 PNG y las fuentes; menú y partida observados con el aspecto nuevo. Evidencias: `startup-solution-debug.txt`, `14-solucion-debug-corregida.jpg` y registros `build-solution-*.log`.
+- Se actualizaron los ejecutables de compilación directa y `output/PC3`; las 48 pruebas funcionales se repitieron correctamente. Sin commits ni publicación en GitHub.
+
+## Publicación de las mejoras — 10 de noviembre de 2026
+
+- El usuario autorizó registrar las mejoras, publicarlas en `feature/mejoras-visuales` y usar dos PR sucesivos hacia `develop` y `main`, integrándolos si las comprobaciones son satisfactorias.
+- Antes de preparar los commits se guardó un respaldo local de los 92 archivos pendientes en `docs/backup/publicacion-2026-11-10/`, excluido del repositorio. La rama parte de `develop` en `813285d`.
+- La publicación comprende los 23 PNG individuales de Figma, fuentes y licencias, interfaz centrada, dibujo del escenario, corrección de inicio, pruebas, evidencias y documentación técnica. La auditoría visual utiliza el commit base fijo para que la comparación siga siendo reproducible después de integrar los cambios.
+- Por indicación expresa del usuario, el Word académico se retira de la versión actual del repositorio y permanece intacto en su computadora mientras lo corrige. El informe de corrección documental también se conserva solo localmente. Las entradas documentales anteriores son históricas y no acreditan una versión APF3 aprobada.
+- Los registros de reconstrucción Debug y Release x64, pruebas y carga de recursos para esta publicación están en `docs/evidence/publicacion/`. No se incluyen ejecutables, paquetes NuGet, carpetas de compilación, respaldos ni credenciales en los commits.

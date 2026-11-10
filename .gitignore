@@ -14,10 +14,17 @@ build/
 *.dll
 *.log
 !docs/evidence/build-*.log
+!docs/evidence/visual/build-*.log
+!docs/evidence/publicacion/build-*.log
 __pycache__/
 docs/source-review/
 docs/qa/
 docs/backup/
+# Documentación académica en revisión: conservar local, publicar solo tras aprobación.
+docs/APF2_Tower_Defense_actualizado.docx
+docs/evidence/document-correction.json
+**/*APF3*.docx
+**/*APF3*.pdf
 output/
 data/*.csv
 tests/tmp/
