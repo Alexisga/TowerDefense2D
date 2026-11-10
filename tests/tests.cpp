@@ -265,8 +265,22 @@ void Screenshots()
         BeginDrawing();
         g.Draw(pointer);
         EndDrawing();
-        TakeScreenshot(file);
+        const auto destination =
+            std::filesystem::path("docs/evidence/visual") / std::filesystem::path(file).filename();
+        std::filesystem::create_directories(destination.parent_path());
+        TakeScreenshot(destination.string().c_str());
     };
+    {
+        AssetManager resources;
+        resources.Load();
+        Check(resources.ImportedTextureCount() == 23,
+              "Grafica: 23 PNG individuales de Figma cargados");
+        Check(resources.TextWidth("TOWER DEFENSE", 48, true) < 524,
+              "Grafica: titulo cabe en su recuadro");
+        Check(resources.TextWidth("REINICIAR PARTIDA", 23, true) < 316,
+              "Grafica: boton de reinicio sin recorte");
+        Check(resources.TextWidth("INTERVALO", 12) < 82, "Grafica: estadisticas caben en columnas");
+    }
     Game g({}, "tests/tmp/graphics.csv");
     g.LoadAssets();
     capture(g, "docs/evidence/01-menu.png");
@@ -281,6 +295,10 @@ void Screenshots()
     g.TogglePause();
     capture(g, "docs/evidence/03-pausa.png");
     g.TogglePause();
+    for (int i = 0; i < 2400 && g.Projectiles().empty() && g.State() == GameState::ACTIVA; ++i)
+        g.Update(1.0f / 60);
+    Check(!g.Projectiles().empty(), "Grafica: combate con proyectiles reales");
+    capture(g, "docs/evidence/09-combate.png");
     GameConfig win;
     win.totalWaves = 1;
     win.firstWaveCount = 1;
@@ -315,6 +333,13 @@ void Screenshots()
         p.SelectTower(TowerType::Basic);
         capture(p, "docs/evidence/07-colocacion-valida.png", {576, 500});
         capture(p, "docs/evidence/08-colocacion-invalida.png", {480, 252});
+        p.SelectTower(TowerType::LongRange);
+        capture(p, "docs/evidence/10-seleccion-largo.png", {576, 500});
+        p.TryBuild({144, 356});
+        p.TryBuild({336, 320});
+        p.SelectTower(TowerType::Basic);
+        p.Update(2.1f);
+        capture(p, "docs/evidence/11-monedas-insuficientes.png", {576, 500});
     }
     // g libera texturas antes de cerrar el contexto OpenGL.
 }
@@ -340,7 +365,8 @@ void Benchmark()
             g.TryBuild(p);
         for (int i = 0; i < 300; ++i)
             g.Update(1.0f / 60);
-        std::ofstream raw("docs/evidence/frame-times.csv");
+        std::filesystem::create_directories("docs/evidence/visual");
+        std::ofstream raw("docs/evidence/visual/frame-times.csv");
         raw << "frame,frame_ms,entities,update_draw_cpu_ms\n";
         std::vector<double> ms;
         size_t minEntities = 99999;
@@ -363,11 +389,11 @@ void Benchmark()
                 raw << i << ',' << elapsed << ',' << entities << ',' << cpu << '\n';
             }
             if (i == 240)
-                TakeScreenshot("docs/evidence/06-rendimiento.png");
+                TakeScreenshot("docs/evidence/visual/06-rendimiento.png");
         }
         std::sort(ms.begin(), ms.end());
         double avg = std::accumulate(ms.begin(), ms.end(), 0.0) / ms.size();
-        std::ofstream result("docs/evidence/benchmark.json");
+        std::ofstream result("docs/evidence/visual/benchmark.json");
         result << "{\n  \"frames\": " << ms.size() << ", \"min_entities\": " << minEntities
                << ",\n  \"mean_frame_ms\": " << avg << ", \"mean_fps\": " << 1000 / avg
                << ",\n  \"p95_frame_ms\": " << ms[static_cast<size_t>(ms.size() * 0.95)]

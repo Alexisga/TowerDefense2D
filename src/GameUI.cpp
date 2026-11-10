@@ -1,152 +1,259 @@
 #include "GameUI.h"
 #include "AssetManager.h"
+#include <cmath>
 #include <string>
+
 namespace
 {
-const Color gold{205, 162, 85, 255}, light{244, 225, 184, 255}, muted{187, 175, 145, 255},
-    panel{38, 32, 24, 255}, green{56, 91, 48, 255};
-}
-void GameUI::Panel(Rectangle r, Color fill, bool hi) const
+const Color gold{197, 161, 100, 255}, goldLight{240, 206, 139, 255}, light{242, 223, 183, 255},
+    muted{196, 182, 154, 255}, wood{51, 42, 32, 255}, deep{36, 31, 25, 255}, green{54, 87, 43, 255},
+    red{209, 82, 66, 255};
+
+// Emblemas de resultados aproximados; no se presentan como exportaciones de Figma.
+void Shield(Vector2 c, Color accent, bool cracked)
 {
-    DrawRectangleRounded(r, 0.03f, 6, fill);
-    DrawRectangleRoundedLinesEx(r, 0.03f, 6, hi ? 2.0f : 1.0f, hi ? light : gold);
+    const Vector2 outer[] = {{c.x - 42, c.y - 34}, {c.x - 34, c.y + 22}, {c.x, c.y + 49},
+                             {c.x + 34, c.y + 22}, {c.x + 42, c.y - 34}, {c.x, c.y - 49}};
+    DrawTriangleFan(outer, 6, accent);
+    const Vector2 inner[] = {{c.x - 34, c.y - 28}, {c.x - 27, c.y + 18}, {c.x, c.y + 38},
+                             {c.x + 27, c.y + 18}, {c.x + 34, c.y - 28}, {c.x, c.y - 40}};
+    DrawTriangleFan(inner, 6, cracked ? Color{82, 86, 76, 255} : wood);
+    if (cracked)
+    {
+        DrawLineEx({c.x + 7, c.y - 36}, {c.x - 6, c.y - 10}, 5, deep);
+        DrawLineEx({c.x - 6, c.y - 10}, {c.x + 8, c.y + 4}, 5, deep);
+        DrawLineEx({c.x + 8, c.y + 4}, {c.x - 7, c.y + 33}, 5, deep);
+    }
+    else
+    {
+        DrawTriangle({c.x - 21, c.y + 10}, {c.x - 7, c.y - 2}, {c.x - 25, c.y - 13}, accent);
+        DrawTriangle({c.x - 10, c.y + 8}, {c.x + 10, c.y + 8}, {c.x, c.y - 22}, accent);
+        DrawTriangle({c.x + 7, c.y - 2}, {c.x + 21, c.y + 10}, {c.x + 25, c.y - 13}, accent);
+        DrawRectangle(static_cast<int>(c.x) - 21, static_cast<int>(c.y) + 8, 42, 8, accent);
+    }
+}
+void Trophy(Vector2 c)
+{
+    DrawEllipse(static_cast<int>(c.x) - 27, static_cast<int>(c.y) - 6, 15, 21, gold);
+    DrawEllipse(static_cast<int>(c.x) + 27, static_cast<int>(c.y) - 6, 15, 21, gold);
+    DrawEllipse(static_cast<int>(c.x) - 27, static_cast<int>(c.y) - 9, 10, 13, deep);
+    DrawEllipse(static_cast<int>(c.x) + 27, static_cast<int>(c.y) - 9, 10, 13, deep);
+    DrawRectangleRounded({c.x - 27, c.y - 31, 54, 55}, 0.7f, 12, gold);
+    DrawRectangleRounded({c.x - 21, c.y - 27, 42, 43}, 0.7f, 12, goldLight);
+    DrawRectangle(static_cast<int>(c.x) - 6, static_cast<int>(c.y) + 18, 12, 24, gold);
+    DrawRectangleRounded({c.x - 26, c.y + 39, 52, 9}, 0.2f, 4, gold);
+    DrawLineEx({c.x - 28, c.y - 31}, {c.x + 28, c.y - 31}, 4, light);
+}
+void Divider(float y)
+{
+    DrawLineEx({478, y}, {619, y}, 1, gold);
+    DrawLineEx({661, y}, {802, y}, 1, gold);
+    DrawPoly({640, y}, 4, 6, 0, goldLight);
+}
+} // namespace
+
+void GameUI::Panel(Rectangle r, Color fill, bool highlighted) const
+{
+    DrawRectangleRounded({r.x + 4, r.y + 6, r.width, r.height}, 0.025f, 8, Color{8, 12, 8, 95});
+    DrawRectangleRounded(r, 0.025f, 8, fill);
+    DrawRectangleGradientV(static_cast<int>(r.x + 3), static_cast<int>(r.y + 3),
+                           static_cast<int>(r.width - 6), static_cast<int>(r.height - 6),
+                           Color{98, 74, 41, 30}, Color{12, 13, 9, 45});
+    DrawRectangleRoundedLinesEx(r, 0.025f, 8, highlighted ? 2.0f : 1.0f,
+                                highlighted ? goldLight : Color{128, 98, 61, 255});
+    DrawRectangleLinesEx({r.x + 6, r.y + 6, r.width - 12, r.height - 12}, 1,
+                         Color{127, 99, 58, 75});
     for (int dx : {0, 1})
         for (int dy : {0, 1})
         {
-            float x = r.x + (dx ? r.width - 5 : 5), y = r.y + (dy ? r.height - 5 : 5);
-            DrawLineEx({x, y}, {x + (dx ? -9 : 9), y}, 2, gold);
-            DrawLineEx({x, y}, {x, y + (dy ? -9 : 9)}, 2, gold);
+            const float x = r.x + (dx ? r.width - 4 : 4), y = r.y + (dy ? r.height - 4 : 4);
+            DrawLineEx({x, y}, {x + (dx ? -12 : 12), y}, 2, gold);
+            DrawLineEx({x, y}, {x, y + (dy ? -12 : 12)}, 2, gold);
         }
 }
-void GameUI::Button(const AssetManager &a, Rectangle r, const std::string &text, Color fill) const
+
+void GameUI::Button(const AssetManager &a, Rectangle r, const std::string &label, Color fill) const
 {
-    bool hover = CheckCollisionPointRec(GetMousePosition(), r);
-    Panel(r,
-          hover ? Color{static_cast<unsigned char>(fill.r + 12),
-                        static_cast<unsigned char>(fill.g + 12),
-                        static_cast<unsigned char>(fill.b + 8), 255}
-                : fill,
-          hover);
-    a.Text(text, {r.x + (r.width - a.TextWidth(text, 22, true)) / 2, r.y + (r.height - 24) / 2}, 22,
-           light, true);
+    const bool hover = CheckCollisionPointRec(GetMousePosition(), r);
+    DrawRectangleRounded({r.x + 3, r.y + 4, r.width, r.height}, 0.08f, 8, Color{8, 12, 8, 95});
+    const Color background = hover ? Color{static_cast<unsigned char>(fill.r + 12),
+                                           static_cast<unsigned char>(fill.g + 12),
+                                           static_cast<unsigned char>(fill.b + 8), 255}
+                                   : fill;
+    DrawRectangleRounded(r, 0.08f, 8, background);
+    DrawRectangleRoundedLinesEx(r, 0.08f, 8, 1, gold);
+    a.Texture("trim-button", r);
+    const bool small = r.height < 50;
+    const float size = small ? 15.0f : (label == "JUGAR" ? 32.0f : 23.0f);
+    if (small)
+    {
+        const float textWidth = a.TextWidth(label, size, false, true);
+        const float groupWidth = 22 + 10 + textWidth;
+        const float x = r.x + (r.width - groupWidth) / 2;
+        a.Texture("icon-pause", {x, r.y + (r.height - 22) / 2, 22, 22});
+        a.CenteredText(label, {x + 32, r.y, textWidth, r.height}, size, light, false, true);
+    }
+    else if (label == "JUGAR")
+    {
+        const float groupWidth = 24 + 18 + a.TextWidth(label, size, true);
+        const float x = r.x + (r.width - groupWidth) / 2;
+        DrawTriangle({x, r.y + r.height / 2 - 13}, {x, r.y + r.height / 2 + 13},
+                     {x + 22, r.y + r.height / 2}, goldLight);
+        a.CenteredText(label, {x + 42, r.y, groupWidth - 42, r.height}, size, light, true);
+    }
+    else
+        a.CenteredText(label, r, size, light, true);
 }
+
 void GameUI::Draw(const AssetManager &a, const UiSnapshot &u) const
 {
     DrawRectangleLinesEx({7, 7, 1266, 706}, 1, gold);
+    DrawRectangleLinesEx({12, 12, 1256, 696}, 1, Color{85, 71, 43, 255});
     if (u.state == GameState::MENU)
     {
-        DrawRectangle(8, 8, 1264, 704, Color{49, 80, 48, 255});
-        for (int i = 0; i < 90; ++i)
-        {
-            float x = static_cast<float>(15 + (i * 173) % 1250),
-                  y = static_cast<float>(30 + (i * 91) % 680);
-            DrawEllipse(static_cast<int>(x), static_cast<int>(y), 36, 19, Color{69, 97, 51, 90});
-        }
+        a.Texture("ground", {8, 8, 1264, 704});
         const Vector2 road[] = {{8, 238}, {250, 238}, {250, 448}, {1040, 448}, {1040, 315}};
         for (int i = 1; i < 5; ++i)
         {
-            DrawLineEx(road[i - 1], road[i], 80, Color{165, 140, 82, 255});
-            DrawCircleV(road[i], 40, Color{165, 140, 82, 255});
+            DrawLineEx(road[i - 1], road[i], 88, Color{103, 117, 60, 255});
+            DrawCircleV(road[i], 44, Color{103, 117, 60, 255});
         }
-        for (int i = 0; i < 22; ++i)
+        for (int i = 1; i < 5; ++i)
         {
-            float x = static_cast<float>(i * 62);
-            a.Sprite("tree", {x, 105 + static_cast<float>((i * 19) % 65)}, 1.25f);
-            a.Sprite("tree", {x, 735 + static_cast<float>((i * 13) % 40)}, 1.5f);
+            DrawLineEx(road[i - 1], road[i], 70, Color{205, 174, 111, 255});
+            DrawCircleV(road[i], 35, Color{205, 174, 111, 255});
         }
-        for (int i = 0; i < 6; ++i)
+        for (int i = 0; i < 17; ++i)
         {
-            a.Sprite("tree", {52, 250 + static_cast<float>(i * 70)}, 1.2f);
-            a.Sprite("tree", {1230, 210 + static_cast<float>(i * 80)}, 1.2f);
+            const float x = static_cast<float>(i * 82);
+            a.Sprite(i % 3 == 1 ? "pine" : "tree", {x, 104 + static_cast<float>((i * 19) % 55)},
+                     1.2f);
+            a.Sprite(i % 2 ? "pine" : "tree", {x + 24, 758 + static_cast<float>((i * 13) % 35)},
+                     1.3f);
         }
-        a.Sprite("castle", {1080, 355}, 1.8f);
-        DrawRectangle(0, 0, 1280, 720, Color{9, 20, 13, 120});
-        Panel({362, 154, 556, 418}, panel, true);
-        DrawCircle(640, 186, 45, gold);
-        DrawCircle(640, 186, 39, Color{66, 57, 36, 255});
-        a.Text("TD", {609, 165}, 39, light, true);
-        a.Text("TOWER DEFENSE", {405, 258}, 45, light, true);
-        a.Text("Defiende la fortaleza", {491, 328}, 27, muted);
-        a.Text("Dos torres. Una fortaleza.", {521, 386}, 19, gold);
+        for (int i = 0; i < 5; ++i)
+        {
+            a.Sprite(i % 2 ? "pine" : "tree", {42, 250 + static_cast<float>(i * 94)}, 1.1f);
+            a.Sprite(i % 2 ? "tree" : "pine", {1232, 232 + static_cast<float>(i * 98)}, 1.1f);
+        }
+        a.Sprite("rock", {252, 167}, 1.1f);
+        a.Sprite("rock", {1120, 585}, 1.0f);
+        a.Sprite("castle", {1072, 372}, 1.65f);
+        DrawRectangle(8, 8, 1264, 704, Color{10, 21, 13, 48});
+        DrawRectangleLinesEx({7, 7, 1266, 706}, 1, gold);
+        DrawRectangleLinesEx({12, 12, 1256, 696}, 1, Color{85, 71, 43, 255});
+        Panel({360, 176, 560, 402}, wood, true);
+        Shield({640, 196}, goldLight, false);
+        a.CenteredText("TOWER DEFENSE", {378, 277, 524, 65}, 48, light, true);
+        Divider(357);
+        a.CenteredText("Defiende la fortaleza", {380, 378, 520, 34}, 25, light);
+        a.CenteredText("Dos torres. Una fortaleza.", {380, 420, 520, 25}, 17, goldLight);
         Button(a, ActionButton(), "JUGAR", green);
-        a.Text("C++ / Raylib  |  Proyecto APF2", {491, 610}, 16, muted);
+        a.CenteredText("C++ / Raylib  |  Proyecto APF2", {380, 610, 520, 26}, 14, light);
         return;
     }
-    Panel({24, 21, 1232, 72}, Color{49, 39, 28, 255});
+
+    const Rectangle hud{24, 21, 1232, 72}, sidebar{928, 110, 328, 540};
+    Panel(hud, wood);
+    a.Texture("trim-hud", hud);
     const std::string selected =
         u.hasSelection ? (u.selection == TowerType::Basic ? "Básica" : "Largo alcance") : "Ninguna";
-    const char *labels[] = {"BASE", "MONEDAS", "OLEADA", "TORRE"};
-    std::string values[] = {
+    const char *labels[] = {"BASE:", "MONEDAS:", "OLEADA:", "TORRE:"};
+    const char *icons[] = {"icon-shield", "icon-coin", "icon-wave", "icon-tower"};
+    const std::string values[] = {
         std::to_string(u.life) + " / " + std::to_string(u.maxLife), std::to_string(u.coins),
         std::to_string(u.wave) + " / " + std::to_string(u.totalWaves), selected};
-    int xs[] = {80, 328, 576, 824};
+    const float xs[] = {80, 328, 576, 824};
     for (int i = 0; i < 4; ++i)
     {
-        a.Text(labels[i], {static_cast<float>(xs[i]), 35}, 12, muted);
-        a.Text(values[i], {static_cast<float>(xs[i]), 51}, 24,
-               i == 0 && u.life < 6 ? Color{221, 97, 76, 255} : light);
+        a.Texture(icons[i], {xs[i] - 34, 45, 22, 22});
+        a.Text(labels[i], {xs[i], 34}, 13, muted, false, true);
+        a.Text(values[i], {xs[i], 51}, 25,
+               i == 0 && u.life < 6 ? red : (i == 1 ? goldLight : light), false, true);
     }
-    DrawPoly({56, 56}, 6, 9, 30, gold);
-    DrawCircle(305, 56, 9, gold);
-    a.Text("$", {300, 46}, 17, panel);
-    a.Text("~", {542, 42}, 30, gold);
-    a.Text("T", {792, 43}, 24, gold, true);
-    Button(a, PauseButton(), "II  PAUSA", panel);
-    Panel({930, 112, 326, 536}, panel);
-    a.Text("DEFENSA DEL REINO", {945, 130}, 12, gold);
-    a.Text("CONSTRUIR TORRE", {945, 150}, 22, light, true);
-    for (auto type : {TowerType::Basic, TowerType::LongRange})
+    Button(a, PauseButton(), "PAUSA", wood);
+    Panel(sidebar, wood);
+    a.Texture("trim-sidebar", sidebar);
+    a.Text("DEFENSA DEL REINO", {945, 129}, 13, gold);
+    a.Text("CONSTRUIR TORRE", {945, 151}, 21, light, true);
+
+    for (TowerType type : {TowerType::Basic, TowerType::LongRange})
     {
-        bool basic = type == TowerType::Basic;
-        auto r = basic ? BasicButton() : LongButton();
-        auto stats = Stats(type);
-        bool active = u.hasSelection && u.selection == type;
-        Panel(r, active ? Color{51, 48, 30, 255} : Color{33, 29, 23, 255}, active);
-        a.Sprite(basic ? "basic" : "long", {984, r.y + 72}, 0.75f);
-        a.Text(basic ? "TORRE BÁSICA" : "TORRE DE LARGO", {1038, r.y + 15}, 16, light, true);
+        const bool basic = type == TowerType::Basic;
+        const Rectangle r = basic ? BasicButton() : LongButton();
+        const auto stats = Stats(type);
+        const bool chosen = u.hasSelection && u.selection == type;
+        const bool hover = CheckCollisionPointRec(GetMousePosition(), r);
+        DrawRectangleRounded({r.x + 2, r.y + 4, r.width, r.height}, 0.07f, 8, Color{9, 13, 8, 65});
+        DrawRectangleRounded(r, 0.07f, 8, deep);
+        DrawRectangleRoundedLinesEx(r, 0.07f, 8, chosen ? 2.0f : 1.0f,
+                                    chosen ? goldLight : (hover ? gold : Color{128, 98, 61, 255}));
+        a.Sprite(basic ? "basic" : "long", {984, r.y + 69}, 0.75f);
+        a.Text(basic ? "Torre básica" : "Torre de largo", {1038, r.y + 15}, 17.5f, light, true);
         if (!basic)
-            a.Text("ALCANCE", {1038, r.y + 36}, 16, light, true);
-        a.Text(std::to_string(stats.cost) + " monedas", {1038, r.y + (basic ? 44 : 59)}, 16, gold);
-        a.Text("DAÑO       ALCANCE       INTERVALO", {958, r.y + 96}, 11, muted);
-        a.Text(std::to_string(stats.damage), {958, r.y + 114}, 16, light);
-        a.Text(std::to_string(static_cast<int>(stats.range)) + " px", {1046, r.y + 114}, 16, light);
-        a.Text(basic ? "0,8 s" : "1,4 s", {1138, r.y + 114}, 16, light);
-        a.Text(active ? "Seleccionada · Elige una casilla" : "Clic para seleccionar",
-               {958, r.y + 145}, 12, muted);
+            a.Text("alcance", {1038, r.y + 39}, 17.5f, light, true);
+        const float costY = r.y + (basic ? 43 : 62);
+        a.Texture("icon-coin", {1038, costY + 1, 16, 16});
+        a.Text(std::to_string(stats.cost) + " monedas", {1060, costY}, 15, goldLight, false, true);
+        const char *columns[] = {"DAÑO", "ALCANCE", "INTERVALO"};
+        const float columnX[] = {958, 1046, 1138};
+        const std::string numbers[] = {std::to_string(stats.damage),
+                                       std::to_string(static_cast<int>(stats.range)) + " px",
+                                       basic ? "0,8 s" : "1,4 s"};
+        for (int i = 0; i < 3; ++i)
+        {
+            a.Text(columns[i], {columnX[i], r.y + 96}, 12, muted);
+            a.Text(numbers[i], {columnX[i], r.y + 115}, 16, light, false, true);
+        }
+        a.Text(chosen ? "Seleccionada · Elige una casilla" : "Clic para seleccionar",
+               {958, r.y + 146}, 13, chosen ? goldLight : muted);
     }
-    a.Text("Dos torres. Una fortaleza.", {945, 569}, 16, gold);
-    a.Text("Selecciona un tipo y colócalo en", {945, 594}, 14, muted);
-    a.Text("una casilla libre fuera del camino.", {945, 613}, 14, muted);
-    Panel({24, 667, 1232, 35}, Color{35, 30, 23, 255});
-    const Color status = u.error ? Color{238, 109, 82, 255} : light;
-    a.Text(u.error ? "!" : "*", {36, 673}, 18, status);
-    a.Text(u.message, {62, 674}, 15, status);
-    a.Text("1 / 2: torre   Esc: cancelar   P: pausa", {944, 652}, 11, muted);
+    a.Text("Dos torres. Una fortaleza.", {945, 569}, 15, goldLight, false, true);
+    a.Text("Selecciona un tipo y colócalo en", {945, 595}, 14, muted);
+    a.Text("una casilla libre fuera del camino.", {945, 616}, 14, muted);
+    a.Text("1 / 2: torre   Esc: cancelar   P: pausa", {944, 652}, 11.5f, muted);
+
+    Panel({24, 667, 1232, 35}, deep);
+    if (u.error)
+        DrawRectangleRoundedLinesEx({24, 667, 1232, 35}, 0.08f, 6, 1, red);
+    a.Texture(u.error ? "icon-warning" : "icon-info", {35, 675, 18, 18});
+    a.Text(u.message, {62, 675}, 14, u.error ? Color{247, 185, 153, 255} : light);
     if (u.state == GameState::ACTIVA)
     {
-        std::string s =
-            u.nextWave > 0
-                ? "Próxima oleada: " + std::to_string(static_cast<int>(u.nextWave) + 1) + " s"
-                : "Defiende la fortaleza";
-        a.Text(s, {42, 122}, 13, light);
+        if (u.nextWave > 0)
+        {
+            DrawRectangleRounded({35, 122, 202, 24}, 0.2f, 6, Color{25, 44, 28, 205});
+            a.Text("Próxima oleada: " + std::to_string(static_cast<int>(std::ceil(u.nextWave))) +
+                       " s",
+                   {45, 126}, 13, light);
+        }
         return;
     }
-    DrawRectangle(0, 0, 1280, 720, Color{6, 12, 8, 155});
-    Panel({416, 185, 448, 381}, panel, true);
-    bool paused = u.state == GameState::PAUSADA, won = u.state == GameState::VICTORIA;
-    Color accent = paused ? gold : (won ? Color{217, 181, 86, 255} : Color{211, 86, 66, 255});
-    DrawCircleLines(640, 245, 34, accent);
-    a.Text(paused ? "II" : (won ? "V" : "X"), {paused ? 626.0f : 625.0f, 223}, 40, accent, true);
-    std::string heading = paused ? "PAUSA" : (won ? "¡VICTORIA!" : "DERROTA");
-    a.Text(heading, {640 - a.TextWidth(heading, 42, true) / 2, 299}, 42, accent, true);
-    DrawLine(467, 359, 813, 359, gold);
-    std::string desc = paused ? "La partida está detenida"
-                              : (won ? "¡Has defendido la fortaleza!" : "La fortaleza ha caído");
-    a.Text(desc, {640 - a.TextWidth(desc, 23) / 2, 387}, 23, light);
-    std::string detail =
+
+    DrawRectangle(0, 0, 1280, 720, Color{6, 12, 8, 145});
+    Panel({416, 185, 448, 381}, wood, true);
+    const bool paused = u.state == GameState::PAUSADA, won = u.state == GameState::VICTORIA;
+    const Color accent = paused || won ? goldLight : red;
+    if (paused)
+    {
+        DrawCircleLines(640, 244, 34, accent);
+        a.Texture("icon-pause", {617, 221, 46, 46});
+    }
+    else if (won)
+        Trophy({640, 238});
+    else
+        Shield({640, 241}, red, true);
+    const std::string title = paused ? "PAUSA" : (won ? "¡VICTORIA!" : "DERROTA");
+    a.CenteredText(title, {432, 295, 416, 58}, 43, accent, true);
+    Divider(364);
+    const std::string desc = paused
+                                 ? "La partida está detenida"
+                                 : (won ? "¡Has defendido la fortaleza!" : "La fortaleza ha caído");
+    a.CenteredText(desc, {432, 387, 416, 30}, 22, light);
+    const std::string detail =
         paused ? "Reanuda para continuar"
                : (won ? "Todas las oleadas completadas" : "La vida de la base llegó a cero");
-    a.Text(detail, {640 - a.TextWidth(detail, 17) / 2, 425}, 17, muted);
+    a.CenteredText(detail, {432, 425, 416, 24}, 16, muted);
     Button(a, ActionButton(), paused ? "REANUDAR" : "REINICIAR PARTIDA",
            won || paused ? green : Color{112, 49, 36, 255});
 }

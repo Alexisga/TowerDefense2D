@@ -1,0 +1,92 @@
+Compilación iniciada a las 9/11/2026 19:45:09.
+El nivel de detalle de registro está establecido en Normal.
+Proyecto "C:\Users\User\source\repos\TowerDefense2D\TowerDefense2D.slnx" en nodo 1 (destinos predeterminados).
+ValidateSolutionConfiguration:
+  Compilando la configuración de soluciones "Debug|x64".
+El proyecto "C:\Users\User\source\repos\TowerDefense2D\TowerDefense2D.slnx" (1) está compilando "C:\Users\User\source\repos\TowerDefense2D\tests\TowerDefense2D.Tests.vcxproj" (2) en el nodo 1 (destinos predeterminados).
+PrepareForBuild:
+  La salida estructurada está habilitada. El formato del diagnóstico del compilador reflejará la jerarquía de errores. Consulte https://aka.ms/cpp/structured-output para obtener más detalles.
+InitializeBuildStatus:
+  Se creará "C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\TowerDef.B1A9EB39.tlog\unsuccessfulbuild" porque se especificó "AlwaysCreate".
+  Aplicando tarea Touch a "C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\TowerDef.B1A9EB39.tlog\unsuccessfulbuild".
+ComputeStdModulesCompileInputs:
+  Leyendo el archivo de manifiesto de biblioteca "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\modules\modules.json", que proporciona datos para la biblioteca "microsoft/STL".
+  Agregando el origen del módulo "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\modules\std.ixx" de la biblioteca "microsoft/STL" para compilar con este proyecto.
+  Agregando el origen del módulo "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\modules\std.compat.ixx" de la biblioteca "microsoft/STL" para compilar con este proyecto.
+ClCompile:
+  C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX86\x64\CL.exe /c /IC:\Users\User\source\repos\TowerDefense2D\packages\raylib.6.2.0\build\native\include\ /IC:\Users\User\source\repos\TowerDefense2D\tests\..\include /Zi /nologo /W4 /WX- /diagnostics:column /O2 /D PLATFORM_DESKTOP /D GRAPHICS_API_OPENGL_33 /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++20 /Fo"C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\\" /Fd"C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\vc145.pdb" /external:W4 /Gd /TP /FC /errorReport:queue /utf-8 tests.cpp ..\src\AssetManager.cpp ..\src\CsvLogger.cpp ..\src\Enemy.cpp ..\src\Game.cpp ..\src\GameMap.cpp ..\src\GameUI.cpp ..\src\Projectile.cpp ..\src\Tower.cpp ..\src\WaveManager.cpp
+  tests.cpp
+  AssetManager.cpp
+  CsvLogger.cpp
+  Enemy.cpp
+  Game.cpp
+  GameMap.cpp
+  GameUI.cpp
+  Projectile.cpp
+  Tower.cpp
+  WaveManager.cpp
+  Generando código...
+Link:
+  C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\Debug\TowerDefense2D.Tests.exe" /NOLOGO C:\Users\User\source\repos\TowerDefense2D\packages\raylib.6.2.0\build\native\lib\x64\raylib.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FULL /PDB:"C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\Debug\TowerDefense2D.Tests.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\Debug\TowerDefense2D.Tests.lib" /MACHINE:X64 C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\tests.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\AssetManager.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\CsvLogger.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\Enemy.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\Game.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\GameMap.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\GameUI.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\Projectile.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\Tower.obj
+  C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\WaveManager.obj
+  TowerDefense2D.Tests.vcxproj -> C:\Users\User\source\repos\TowerDefense2D\build\tests\Debug\TowerDefense2D.Tests.exe
+FinalizeBuildStatus:
+  Se eliminará el archivo "C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\TowerDef.B1A9EB39.tlog\unsuccessfulbuild".
+  Aplicando tarea Touch a "C:\Users\User\source\repos\TowerDefense2D\tests\..\build\tests\obj\Debug\TowerDef.B1A9EB39.tlog\TowerDefense2D.Tests.lastbuildstate".
+Compilación del proyecto terminada "C:\Users\User\source\repos\TowerDefense2D\tests\TowerDefense2D.Tests.vcxproj" (destinos predeterminados).
+El proyecto "C:\Users\User\source\repos\TowerDefense2D\TowerDefense2D.slnx" (1) está compilando "C:\Users\User\source\repos\TowerDefense2D\TowerDefense2D\TowerDefense2D.vcxproj" (3) en el nodo 1 (destinos predeterminados).
+PrepareForBuild:
+  La salida estructurada está habilitada. El formato del diagnóstico del compilador reflejará la jerarquía de errores. Consulte https://aka.ms/cpp/structured-output para obtener más detalles.
+InitializeBuildStatus:
+  Se creará "x64\Debug\TowerDefense2D.tlog\unsuccessfulbuild" porque se especificó "AlwaysCreate".
+  Aplicando tarea Touch a "x64\Debug\TowerDefense2D.tlog\unsuccessfulbuild".
+ComputeStdModulesCompileInputs:
+  Leyendo el archivo de manifiesto de biblioteca "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\modules\modules.json", que proporciona datos para la biblioteca "microsoft/STL".
+  Agregando el origen del módulo "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\modules\std.ixx" de la biblioteca "microsoft/STL" para compilar con este proyecto.
+  Agregando el origen del módulo "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\modules\std.compat.ixx" de la biblioteca "microsoft/STL" para compilar con este proyecto.
+ClCompile:
+  C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX86\x64\CL.exe /c /IC:\Users\User\source\repos\TowerDefense2D\packages\raylib.6.2.0\build\native\include\ /IC:\Users\User\source\repos\TowerDefense2D\TowerDefense2D\..\include /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /D PLATFORM_DESKTOP /D GRAPHICS_API_OPENGL_33 /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++20 /permissive- /Fo"x64\Debug\\" /Fd"x64\Debug\vc145.pdb" /external:W3 /Gd /TP /FC /errorReport:queue /utf-8 main.cpp ..\src\AssetManager.cpp ..\src\CsvLogger.cpp ..\src\Enemy.cpp ..\src\Game.cpp ..\src\GameMap.cpp ..\src\GameUI.cpp ..\src\Projectile.cpp ..\src\Tower.cpp ..\src\WaveManager.cpp
+  main.cpp
+  AssetManager.cpp
+  CsvLogger.cpp
+  Enemy.cpp
+  Game.cpp
+  GameMap.cpp
+  GameUI.cpp
+  Projectile.cpp
+  Tower.cpp
+  WaveManager.cpp
+  Generando código...
+Link:
+  C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\User\source\repos\TowerDefense2D\x64\Debug\TowerDefense2D.exe" /INCREMENTAL /ILK:"x64\Debug\TowerDefense2D.ilk" /NOLOGO C:\Users\User\source\repos\TowerDefense2D\packages\raylib.6.2.0\build\native\lib\x64\raylib.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:MSVCRT /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\Include\Manifest\segmentheap.manifest" /DEBUG /PDB:"C:\Users\User\source\repos\TowerDefense2D\x64\Debug\TowerDefense2D.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\source\repos\TowerDefense2D\x64\Debug\TowerDefense2D.lib" /MACHINE:X64 x64\Debug\main.obj
+  x64\Debug\AssetManager.obj
+  x64\Debug\CsvLogger.obj
+  x64\Debug\Enemy.obj
+  x64\Debug\Game.obj
+  x64\Debug\GameMap.obj
+  x64\Debug\GameUI.obj
+  x64\Debug\Projectile.obj
+  x64\Debug\Tower.obj
+  x64\Debug\WaveManager.obj
+  TowerDefense2D.vcxproj -> C:\Users\User\source\repos\TowerDefense2D\x64\Debug\TowerDefense2D.exe
+FinalizeBuildStatus:
+  Se eliminará el archivo "x64\Debug\TowerDefense2D.tlog\unsuccessfulbuild".
+  Aplicando tarea Touch a "x64\Debug\TowerDefense2D.tlog\TowerDefense2D.lastbuildstate".
+Compilación del proyecto terminada "C:\Users\User\source\repos\TowerDefense2D\TowerDefense2D\TowerDefense2D.vcxproj" (destinos predeterminados).
+Compilación del proyecto terminada "C:\Users\User\source\repos\TowerDefense2D\TowerDefense2D.slnx" (destinos predeterminados).
+
+Compilación correcta.
+    0 Advertencia(s)
+    0 Errores
+
+FileLogger escrito en: C:\Users\User\source\repos\TowerDefense2D\docs\evidence\visual\build-solution-debug.log
+
+Tiempo transcurrido 00:00:31.50

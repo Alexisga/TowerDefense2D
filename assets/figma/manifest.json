@@ -1,0 +1,144 @@
+{
+  "fileKey": "pSD8QGOknqb9diYtcecgda",
+  "source": "https://www.figma.com/design/pSD8QGOknqb9diYtcecgda/",
+  "exports": [
+    {
+      "name": "basic",
+      "id": "3:2",
+      "width": 96,
+      "height": 112
+    },
+    {
+      "name": "long",
+      "id": "3:20",
+      "width": 96,
+      "height": 128
+    },
+    {
+      "name": "castle",
+      "id": "3:35",
+      "width": 180,
+      "height": 172
+    },
+    {
+      "name": "enemy",
+      "id": "3:60",
+      "width": 48,
+      "height": 56
+    },
+    {
+      "name": "tree",
+      "id": "3:74",
+      "width": 104,
+      "height": 122
+    },
+    {
+      "name": "pine",
+      "id": "3:84",
+      "width": 84,
+      "height": 126
+    },
+    {
+      "name": "rock",
+      "id": "3:91",
+      "width": 66,
+      "height": 44
+    },
+    {
+      "name": "icon-shield",
+      "id": "3:99",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-coin",
+      "id": "3:104",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-wave",
+      "id": "3:110",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-tower",
+      "id": "3:113",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-pause",
+      "id": "3:117",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-info",
+      "id": "3:120",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-valid",
+      "id": "3:124",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-invalid",
+      "id": "3:127",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-arrow",
+      "id": "3:130",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "icon-warning",
+      "id": "19:899",
+      "width": 24,
+      "height": 24
+    },
+    {
+      "name": "cursor-build",
+      "id": "20:837",
+      "width": 28,
+      "height": 34
+    },
+    {
+      "name": "trim-button",
+      "id": "3:138",
+      "width": 144,
+      "height": 44
+    },
+    {
+      "name": "trim-hud",
+      "id": "3:238",
+      "width": 1232,
+      "height": 76
+    },
+    {
+      "name": "trim-sidebar",
+      "id": "3:411",
+      "width": 328,
+      "height": 540
+    },
+    {
+      "name": "ground",
+      "id": "5:463",
+      "width": 888,
+      "height": 540
+    },
+    {
+      "name": "foliage",
+      "id": "5:1124",
+      "width": 888,
+      "height": 540
+    }
+  ]
+}

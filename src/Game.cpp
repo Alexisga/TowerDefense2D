@@ -228,8 +228,8 @@ void Game::Draw(Vector2 pointer)
                                    Fade(WHITE, 0.55f));
                 else
                 {
-                    DrawLineEx({center.x - 7, center.y - 7}, {center.x + 7, center.y + 7}, 3, c);
-                    DrawLineEx({center.x - 7, center.y + 7}, {center.x + 7, center.y - 7}, 3, c);
+                    assets_.Texture("icon-invalid", {center.x - 12, center.y - 12, 24, 24});
+                    assets_.Texture("icon-warning", {center.x + 9, center.y - 34, 21, 21});
                 }
                 EndScissorMode();
                 error = !valid;

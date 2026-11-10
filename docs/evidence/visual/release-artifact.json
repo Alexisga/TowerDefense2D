@@ -1,0 +1,8 @@
+{
+  "artifact": "TowerDefense2D.exe",
+  "configuration": "Release x64",
+  "sha256": "E5ED498166FD13A3DB9BAB2AEAB8A17FC1A934CC1FF5EE2E05F94F856CE627C9",
+  "source_commit": "813285dc8922b76d1f2fe49ad6289fa2d5ef5213",
+  "local_modifications": true,
+  "packaged_at": "2026-11-10T00:47:19.0874367Z"
+}
