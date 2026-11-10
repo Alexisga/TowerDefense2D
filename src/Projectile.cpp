@@ -34,6 +34,19 @@ void Projectile::Draw() const
 {
     if (!active_)
         return;
-    DrawLineEx(previous_, position_, 2, Color{248, 218, 135, 255});
-    DrawCircleV(position_, 3, Color{255, 238, 180, 255});
+    const float length = std::sqrt(DistanceSquared(previous_, position_));
+    if (length < 0.001f)
+        return;
+    const Vector2 direction{(position_.x - previous_.x) / length,
+                            (position_.y - previous_.y) / length};
+    const Vector2 tail{position_.x - direction.x * 17, position_.y - direction.y * 17};
+    const Vector2 headBase{position_.x - direction.x * 6, position_.y - direction.y * 6};
+    const Vector2 side{-direction.y * 3, direction.x * 3};
+    DrawLineEx(tail, headBase, 2, Color{224, 199, 142, 255});
+    DrawTriangle(position_, {headBase.x + side.x, headBase.y + side.y},
+                 {headBase.x - side.x, headBase.y - side.y}, Color{255, 239, 192, 255});
+    DrawLineEx(tail, {tail.x + direction.x * 5 + side.x, tail.y + direction.y * 5 + side.y}, 2,
+               Color{242, 223, 183, 255});
+    DrawLineEx(tail, {tail.x + direction.x * 5 - side.x, tail.y + direction.y * 5 - side.y}, 2,
+               Color{242, 223, 183, 255});
 }

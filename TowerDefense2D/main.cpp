@@ -4,14 +4,26 @@
 
 int main()
 {
-    // Inicio reproducible también al abrir el EXE desde el Explorador.
+    // El paquete usa assets junto al EXE. Visual Studio puede generar el EXE
+    // en x64/Debug o en TowerDefense2D/x64/Debug: no asumir una profundidad fija.
     auto directory = std::filesystem::path(GetApplicationDirectory());
-    const auto projectRoot = directory / ".." / ".." / "..";
-    if (std::filesystem::exists(projectRoot / "TowerDefense2D.slnx"))
+    for (auto candidate = directory; !candidate.empty();)
     {
-        directory = std::filesystem::weakly_canonical(projectRoot);
+        const bool besideExecutable = candidate == directory;
+        const bool projectRoot = std::filesystem::exists(candidate / "TowerDefense2D.slnx");
+        if ((besideExecutable || projectRoot) &&
+            std::filesystem::is_directory(candidate / "assets"))
+        {
+            directory = std::filesystem::weakly_canonical(candidate);
+            break;
+        }
+        const auto parent = candidate.parent_path();
+        if (parent == candidate)
+            break;
+        candidate = parent;
     }
     std::filesystem::current_path(directory);
+    TraceLog(LOG_INFO, "PATH: Recursos y datos: %s", directory.string().c_str());
     SetConfigFlags(FLAG_MSAA_4X_HINT);
     InitWindow(1280, 720, "Tower Defense 2D");
 

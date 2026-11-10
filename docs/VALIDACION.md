@@ -1,5 +1,7 @@
 # Validación del avance PC3
 
+Este informe conserva los resultados de la versión inicial. La revisión estética posterior, con sprites reales de Figma y nuevas comprobaciones, está en [REVISION_VISUAL.md](REVISION_VISUAL.md); sus evidencias independientes están en `evidence/visual/`.
+
 Fecha: 2026-11-09. Ejecución automatizada por Codex, bajo solicitud de Kevin. No se registran pruebas manuales de los estudiantes ni aprobación del docente.
 
 ## Compilación y funcionalidad

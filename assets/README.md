@@ -1,7 +1,11 @@
-# Recursos visuales temporales
+# Recursos visuales
 
-Los sprites independientes de árbol, fortaleza, enemigo y dos torres se dibujan con primitivas 2D en AssetManager.cpp y se convierten en texturas al iniciar. Son recursos temporales originales del proyecto, sin descargas ni capturas completas de mockups. Los paneles, textos y botones son interactivos y se dibujan en GameUI.
+`figma/` contiene **23 PNG individuales** exportados del archivo original del usuario: siete sprites del escenario/personajes, diez iconos, un cursor, tres remates de interfaz y dos capas de suelo/vegetación. El detalle de nombres y nodos está en [manifest.json](figma/manifest.json).
 
-Faltan las exportaciones originales de Figma para sustituir estos sprites. Se conserva la distribución 1280 x 720 y la paleta medieval verde, madera y oro; no se afirma fidelidad exacta.
+Las texturas conservan RGBA, proporción y transparencia; son exportaciones a escala 2, salvo las dos capas del mapa a escala 1. No se utiliza una captura completa de pantalla como interfaz del juego. El HUD, los botones y los estados se dibujan con datos vivos; enemigos, torres y proyectiles siguen siendo entidades funcionales.
 
-Las fuentes Georgia y Segoe UI se cargan desde Windows si están disponibles; no se redistribuyen. Raylib aporta la fuente de reserva.
+`fonts/` incluye Inter Regular, Inter SemiBold y Cinzel Bold bajo SIL OFL 1.1, además de los originales variables y sus licencias. Las instancias estáticas se generan con `tools/prepare_visual_fonts.py`. Consulte [SOURCES.md](SOURCES.md) para procedencia y condiciones.
+
+AssetManager conserva los sprites procedurales anteriores como reserva y reemplaza cada textura solo si el PNG carga correctamente. También conserva fuentes de Windows y Raylib como alternativas de carga, sin redistribuir fuentes de Microsoft.
+
+El camino se dibuja sobre los waypoints existentes; los paneles combinan primitivas y adornos exportados. Corona, escudos grandes, trofeo y flechas son aproximaciones originales por código. No representan exportaciones del Figma ni reproducciones exactas de las ilustraciones de referencia.

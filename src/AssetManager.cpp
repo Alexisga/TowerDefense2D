@@ -1,5 +1,7 @@
 #include "AssetManager.h"
+#include <algorithm>
 #include <functional>
+#include <limits>
 namespace
 {
 const Color ink{39, 43, 31, 255}, wood{152, 108, 57, 255}, gold{215, 175, 91, 255},
@@ -51,21 +53,51 @@ void AssetManager::Load()
         return;
     body_ = GetFontDefault();
     title_ = body_;
-    int glyphs[224];
-    for (int i = 0; i < 224; ++i)
+    strong_ = body_;
+    int glyphs[111];
+    for (int i = 0; i < 95; ++i)
         glyphs[i] = 32 + i;
+    const int spanish[] = {161, 183, 191, 193, 201, 205, 209, 211,
+                           218, 220, 225, 233, 237, 241, 243, 250};
+    for (int i = 0; i < 16; ++i)
+        glyphs[95 + i] = spanish[i];
     if (FileExists("C:/Windows/Fonts/segoeui.ttf"))
     {
-        body_ = LoadFontEx("C:/Windows/Fonts/segoeui.ttf", 40, glyphs, 224);
+        body_ = LoadFontEx("C:/Windows/Fonts/segoeui.ttf", 40, glyphs, 111);
         ownsBody_ = body_.texture.id != GetFontDefault().texture.id;
     }
     if (FileExists("C:/Windows/Fonts/georgia.ttf"))
     {
-        title_ = LoadFontEx("C:/Windows/Fonts/georgia.ttf", 64, glyphs, 224);
+        title_ = LoadFontEx("C:/Windows/Fonts/georgia.ttf", 64, glyphs, 111);
         ownsTitle_ = title_.texture.id != GetFontDefault().texture.id;
     }
+    // Fuentes del diseño original, distribuidas con su licencia OFL.
+    auto fontFromAsset = [&](const char *path, Font &font, bool &owned, int pixels) {
+        if (!FileExists(path))
+            return false;
+        Font replacement = LoadFontEx(path, pixels, glyphs, 111);
+        if (replacement.texture.id == 0 || replacement.texture.id == GetFontDefault().texture.id)
+            return false;
+        if (owned)
+            UnloadFont(font);
+        font = replacement;
+        owned = true;
+        return true;
+    };
+    // Raylib mide ascendente+descendente; Figma usa el em de la fuente.
+    // Factores hhea / unitsPerEm medidos en los TTF incluidos.
+    bodyScale_ =
+        fontFromAsset("assets/fonts/Inter-Regular.ttf", body_, ownsBody_, 40) ? 1.2099609375f : 1;
+    titleScale_ =
+        fontFromAsset("assets/fonts/Cinzel-Bold.ttf", title_, ownsTitle_, 64) ? 1.348f : 1;
+    strongScale_ = fontFromAsset("assets/fonts/Inter-SemiBold.ttf", strong_, ownsStrong_, 40)
+                       ? 1.2099609375f
+                       : bodyScale_;
+    if (!ownsStrong_)
+        strong_ = body_;
     SetTextureFilter(body_.texture, TEXTURE_FILTER_BILINEAR);
     SetTextureFilter(title_.texture, TEXTURE_FILTER_BILINEAR);
+    SetTextureFilter(strong_.texture, TEXTURE_FILTER_BILINEAR);
     auto make = [this](const std::string &name, const std::function<void()> &draw) {
         RenderTexture2D rt = LoadRenderTexture(128, 128);
         BeginTextureMode(rt);
@@ -131,6 +163,32 @@ void AssetManager::Load()
         DrawLine(64, 91, 64, 113, ink);
         DrawTriangle({44, 125}, {84, 125}, {64, 103}, Color{186, 170, 128, 255});
     });
+    // Conservar el dibujo anterior como reserva y sustituirlo solo tras cargar un PNG válido.
+    const char *resources[] = {
+        "basic",       "long",        "castle",       "enemy",      "tree",         "pine",
+        "rock",        "icon-shield", "icon-coin",    "icon-wave",  "icon-tower",   "icon-pause",
+        "icon-info",   "icon-valid",  "icon-invalid", "icon-arrow", "icon-warning", "cursor-build",
+        "trim-button", "trim-hud",    "trim-sidebar", "ground",     "foliage"};
+    importedCount_ = 0;
+    for (const char *name : resources)
+    {
+        const std::string path = std::string("assets/figma/") + name + ".png";
+        if (!FileExists(path.c_str()))
+        {
+            TraceLog(LOG_WARNING, "ASSET: Falta %s", path.c_str());
+            continue;
+        }
+        Texture2D imported = LoadTexture(path.c_str());
+        if (imported.id == 0)
+            continue;
+        auto previous = textures_.find(name);
+        if (previous != textures_.end())
+            UnloadTexture(previous->second);
+        textures_[name] = imported;
+        SetTextureFilter(imported, TEXTURE_FILTER_BILINEAR);
+        ++importedCount_;
+    }
+    TraceLog(LOG_INFO, "ASSET: %d/23 texturas originales de Figma cargadas", importedCount_);
     loaded_ = true;
 }
 void AssetManager::Unload()
@@ -144,6 +202,8 @@ void AssetManager::Unload()
         UnloadFont(body_);
     if (ownsTitle_)
         UnloadFont(title_);
+    if (ownsStrong_)
+        UnloadFont(strong_);
     loaded_ = false;
 }
 void AssetManager::Sprite(const std::string &name, Vector2 p, float s, Color tint) const
@@ -151,22 +211,81 @@ void AssetManager::Sprite(const std::string &name, Vector2 p, float s, Color tin
     auto it = textures_.find(name);
     if (it == textures_.end())
         return;
-    // Cada sprite tiene su propio lienzo transparente y ancla en el suelo.
-    float size = 80 * s;
+    // Proporción original y pie estable: el dibujo nunca desplaza la posición lógica.
+    float width = 76.8f * s, footOffset = 10 * s;
     if (name == "enemy")
-        size = 62 * s;
+    {
+        width = 34 * s;
+        footOffset = 13 * s;
+    }
     if (name == "tree")
-        size = 100 * s;
+    {
+        width = 104 * s;
+        footOffset = 0;
+    }
+    if (name == "pine")
+    {
+        width = 84 * s;
+        footOffset = 0;
+    }
+    if (name == "rock")
+    {
+        width = 66 * s;
+        footOffset = 0;
+    }
     if (name == "castle")
-        size = 145 * s;
-    DrawTexturePro(it->second, {0, 0, 128, 128}, {p.x - size / 2, p.y - size * 0.92f, size, size},
-                   {0, 0}, 0, tint);
+    {
+        width = 151.2f * s;
+        footOffset = 18 * s;
+    }
+    const float height = width * it->second.height / it->second.width;
+    Texture(name, {p.x - width / 2, p.y + footOffset - height, width, height}, tint);
 }
-void AssetManager::Text(const std::string &s, Vector2 p, float size, Color c, bool title) const
+void AssetManager::Text(const std::string &s, Vector2 p, float size, Color c, bool title,
+                        bool strong) const
 {
-    DrawTextEx(title ? title_ : body_, s.c_str(), p, size, 0, c);
+    const float scale = title ? titleScale_ : (strong ? strongScale_ : bodyScale_);
+    DrawTextEx(title ? title_ : (strong ? strong_ : body_), s.c_str(), p, size * scale, 0, c);
 }
-float AssetManager::TextWidth(const std::string &s, float size, bool title) const
+float AssetManager::TextWidth(const std::string &s, float size, bool title, bool strong) const
 {
-    return MeasureTextEx(title ? title_ : body_, s.c_str(), size, 0).x;
+    const float scale = title ? titleScale_ : (strong ? strongScale_ : bodyScale_);
+    return MeasureTextEx(title ? title_ : (strong ? strong_ : body_), s.c_str(), size * scale, 0).x;
+}
+void AssetManager::CenteredText(const std::string &s, Rectangle box, float size, Color color,
+                                bool title, bool strong) const
+{
+    const Font font = title ? title_ : (strong ? strong_ : body_);
+    const float renderScale =
+        (title ? titleScale_ : (strong ? strongScale_ : bodyScale_)) * size / font.baseSize;
+    float top = std::numeric_limits<float>::max(), bottom = -top;
+    for (const char *p = s.c_str(); *p;)
+    {
+        int count = 0;
+        const int codepoint = GetCodepointNext(p, &count);
+        p += count;
+        if (codepoint == 32)
+            continue;
+        const int index = GetGlyphIndex(font, codepoint);
+        top = std::min(top, static_cast<float>(font.glyphs[index].offsetY));
+        bottom = std::max(bottom, font.glyphs[index].offsetY + font.recs[index].height);
+    }
+    const float y =
+        top <= bottom ? box.y + (box.height - (bottom - top) * renderScale) / 2 - top * renderScale
+                      : box.y;
+    Text(s, {box.x + (box.width - TextWidth(s, size, title, strong)) / 2, y}, size, color, title,
+         strong);
+}
+void AssetManager::Texture(const std::string &name, Rectangle r, Color tint) const
+{
+    auto it = textures_.find(name);
+    if (it == textures_.end())
+        return;
+    const Texture2D &t = it->second;
+    DrawTexturePro(t, {0, 0, static_cast<float>(t.width), static_cast<float>(t.height)}, r, {0, 0},
+                   0, tint);
+}
+bool AssetManager::HasTexture(const std::string &name) const
+{
+    return textures_.find(name) != textures_.end();
 }

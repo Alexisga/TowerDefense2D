@@ -1,0 +1,356 @@
+{
+  "baseline_commit": "813285dc8922b76d1f2fe49ad6289fa2d5ef5213",
+  "resolution": [
+    1280,
+    720
+  ],
+  "centering": [
+    {
+      "file": "01-menu.png",
+      "region": [
+        378,
+        277,
+        902,
+        342
+      ],
+      "ink_left": 429,
+      "ink_right": 848,
+      "center_x": 638.5,
+      "error_pixels": -1.5
+    },
+    {
+      "file": "03-pausa.png",
+      "region": [
+        432,
+        295,
+        848,
+        353
+      ],
+      "ink_left": 570,
+      "ink_right": 711,
+      "center_x": 640.5,
+      "error_pixels": 0.5
+    },
+    {
+      "file": "04-victoria.png",
+      "region": [
+        432,
+        295,
+        848,
+        353
+      ],
+      "ink_left": 520,
+      "ink_right": 760,
+      "center_x": 640.0,
+      "error_pixels": 0.0
+    },
+    {
+      "file": "05-derrota.png",
+      "region": [
+        432,
+        295,
+        848,
+        353
+      ],
+      "ink_left": 533,
+      "ink_right": 748,
+      "center_x": 640.5,
+      "error_pixels": 0.5
+    },
+    {
+      "file": "01-menu.png",
+      "region": [
+        480,
+        470,
+        800,
+        524
+      ],
+      "ink_left": 564,
+      "ink_right": 714,
+      "center_x": 639.0,
+      "error_pixels": -1.0
+    },
+    {
+      "file": "03-pausa.png",
+      "region": [
+        480,
+        470,
+        800,
+        524
+      ],
+      "ink_left": 573,
+      "ink_right": 708,
+      "center_x": 640.5,
+      "error_pixels": 0.5
+    },
+    {
+      "file": "04-victoria.png",
+      "region": [
+        480,
+        470,
+        800,
+        524
+      ],
+      "ink_left": 521,
+      "ink_right": 759,
+      "center_x": 640.0,
+      "error_pixels": 0.0
+    },
+    {
+      "file": "05-derrota.png",
+      "region": [
+        480,
+        470,
+        800,
+        524
+      ],
+      "ink_left": 521,
+      "ink_right": 759,
+      "center_x": 640.0,
+      "error_pixels": 0.0
+    }
+  ],
+  "logic_preserved": [
+    "src/Game.cpp: contenido anterior a Draw idéntico, salvo espacios",
+    "src/GameMap.cpp: contenido anterior a Draw idéntico, salvo espacios",
+    "src/Projectile.cpp: contenido anterior a Draw idéntico, salvo espacios",
+    "src/Enemy.cpp: idéntico, salvo espacios",
+    "src/Tower.cpp: idéntico, salvo espacios",
+    "src/WaveManager.cpp: idéntico, salvo espacios",
+    "src/CsvLogger.cpp: idéntico, salvo espacios",
+    "include/GameTypes.h: idéntico, salvo espacios",
+    "TowerDefense2D/main.cpp: bucle del juego idéntico; búsqueda de recursos corregida"
+  ],
+  "assets": [
+    {
+      "file": "assets/figma/basic.png",
+      "node": "3:2",
+      "pixels": [
+        192,
+        224
+      ],
+      "scale": 2.0,
+      "sha256": "419c8d171cd965826f56165a6032cc09c8fa94f8f111ddde4f4b4ab720f1df5c"
+    },
+    {
+      "file": "assets/figma/long.png",
+      "node": "3:20",
+      "pixels": [
+        192,
+        256
+      ],
+      "scale": 2.0,
+      "sha256": "28da5f43ffaecb7cba4421228e40dd31eaaeb37836c27c1138b5f282013a03e7"
+    },
+    {
+      "file": "assets/figma/castle.png",
+      "node": "3:35",
+      "pixels": [
+        360,
+        344
+      ],
+      "scale": 2.0,
+      "sha256": "84eca38817adbd532809ec6ea839879c8505fe17f0a31b4000770c52425d064d"
+    },
+    {
+      "file": "assets/figma/enemy.png",
+      "node": "3:60",
+      "pixels": [
+        96,
+        112
+      ],
+      "scale": 2.0,
+      "sha256": "1f58132eaf406e36723433750f83d12ece82838b5898f9a307c5c2ffba90ccea"
+    },
+    {
+      "file": "assets/figma/tree.png",
+      "node": "3:74",
+      "pixels": [
+        208,
+        244
+      ],
+      "scale": 2.0,
+      "sha256": "97fe1be8ace16ba2b993ce8bc1eda27bb3af1586546a9a4d9e6d306372200815"
+    },
+    {
+      "file": "assets/figma/pine.png",
+      "node": "3:84",
+      "pixels": [
+        168,
+        252
+      ],
+      "scale": 2.0,
+      "sha256": "52e282ce8f199a0f7cd54ef81c037106c6b39a01f201c7da5bf7eb31c805cec4"
+    },
+    {
+      "file": "assets/figma/rock.png",
+      "node": "3:91",
+      "pixels": [
+        132,
+        88
+      ],
+      "scale": 2.0,
+      "sha256": "7d552ff1ddf9c857e6b646ac35131882902e61a53eb2efd51d4c7d65763fb127"
+    },
+    {
+      "file": "assets/figma/icon-shield.png",
+      "node": "3:99",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "32d0afd3c21a26fc516e7d508c72cc62a2f713a89d2eb6989badc2478879556d"
+    },
+    {
+      "file": "assets/figma/icon-coin.png",
+      "node": "3:104",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "6474ba85591f7236603d4e74b2116cd8279525c6f766b6c1dc24e78b4e7dbb58"
+    },
+    {
+      "file": "assets/figma/icon-wave.png",
+      "node": "3:110",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "a2da073a7225a568f6b84d7983942bbd3f89f1f00545cfb19ef59ebda0393347"
+    },
+    {
+      "file": "assets/figma/icon-tower.png",
+      "node": "3:113",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "2d8eb3572674dde2725ed1e6813162c58be875debd2f7405f090380392a2dd7a"
+    },
+    {
+      "file": "assets/figma/icon-pause.png",
+      "node": "3:117",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "f02d024029f785cda4b8e03a05b919fbc71fdcbe333f9cbcea486a86b87456de"
+    },
+    {
+      "file": "assets/figma/icon-info.png",
+      "node": "3:120",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "e357223b8070f88d8ade56f56fc8a81776db25a1fee9890ec2729dd494770c87"
+    },
+    {
+      "file": "assets/figma/icon-valid.png",
+      "node": "3:124",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "4a4f45fe93218f721747df33a61f002db56be058d167a9c79d4dd3b5aa6b59c7"
+    },
+    {
+      "file": "assets/figma/icon-invalid.png",
+      "node": "3:127",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "62666ae00b18e171839719ffa1096b024993f5a76ffcc2ea9576eda065a0c206"
+    },
+    {
+      "file": "assets/figma/icon-arrow.png",
+      "node": "3:130",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "928f371fab3f27258a8afa12a8f327ce3e5c6e9731b1aed4d048b3f8b3e53a47"
+    },
+    {
+      "file": "assets/figma/icon-warning.png",
+      "node": "19:899",
+      "pixels": [
+        48,
+        48
+      ],
+      "scale": 2.0,
+      "sha256": "b3d9c59620e20056bcbc79c9f44b70a212699a06c3cb9b20f52f9d94a8591c23"
+    },
+    {
+      "file": "assets/figma/cursor-build.png",
+      "node": "20:837",
+      "pixels": [
+        56,
+        68
+      ],
+      "scale": 2.0,
+      "sha256": "b30274c208e32230b05ec7dfcb308b253dfe4830952804d3e5c120781b88ad73"
+    },
+    {
+      "file": "assets/figma/trim-button.png",
+      "node": "3:138",
+      "pixels": [
+        288,
+        88
+      ],
+      "scale": 2.0,
+      "sha256": "a1b7a50527731db39b0bc233fccc25d0c4cb511f2292737b430fed4c5260b885"
+    },
+    {
+      "file": "assets/figma/trim-hud.png",
+      "node": "3:238",
+      "pixels": [
+        2464,
+        152
+      ],
+      "scale": 2.0,
+      "sha256": "5cbcc2a99045a35a262aced345c6f7685c36a533b1aae56bfdda18462abd3663"
+    },
+    {
+      "file": "assets/figma/trim-sidebar.png",
+      "node": "3:411",
+      "pixels": [
+        656,
+        1080
+      ],
+      "scale": 2.0,
+      "sha256": "9728a227b821043381f0ed7fa63b57d5c6360e500d04a8cfe714d994a649444c"
+    },
+    {
+      "file": "assets/figma/ground.png",
+      "node": "5:463",
+      "pixels": [
+        888,
+        540
+      ],
+      "scale": 1.0,
+      "sha256": "0cb9e4bd8f0dc1de5586b548f604ab6dfa05614c6597ed53a40a318ed70f2fbd"
+    },
+    {
+      "file": "assets/figma/foliage.png",
+      "node": "5:1124",
+      "pixels": [
+        888,
+        540
+      ],
+      "scale": 1.0,
+      "sha256": "65c5ae16efa53bb4e07d7b064eed654d3f9e24efed17dbfcc05036f6680d388b"
+    }
+  ]
+}

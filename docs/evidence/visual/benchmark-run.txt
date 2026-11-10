@@ -1,0 +1,197 @@
+INFO: Initializing raylib 6.2
+INFO: Platform backend: DESKTOP (GLFW)
+INFO: Supported raylib modules:
+INFO:     > rcore:..... loaded (mandatory)
+INFO:     > rlgl:...... loaded (mandatory)
+INFO:     > rshapes:... loaded (optional)
+INFO:     > rtextures:. loaded (optional)
+INFO:     > rtext:..... loaded (optional)
+INFO:     > rmodels:... loaded (optional)
+INFO:     > raudio:.... loaded (optional)
+INFO: DISPLAY: Trying to enable MSAA x4
+INFO: DISPLAY: Device initialized successfully 
+INFO:     > Display size: 1920 x 1080
+INFO:     > Screen size:  1280 x 720
+INFO:     > Render size:  1280 x 720
+INFO:     > Viewport offsets: 0, 0
+INFO: GLAD: OpenGL extensions loaded successfully
+INFO: GL: Supported extensions count: 403
+INFO: GL: OpenGL device information:
+INFO:     > Vendor:   NVIDIA Corporation
+INFO:     > Renderer: NVIDIA GeForce RTX 3060/PCIe/SSE2
+INFO:     > Version:  3.3.0 NVIDIA 580.97
+INFO:     > GLSL:     3.30 NVIDIA via Cg compiler
+INFO: GL: VAO extension detected, VAO functions loaded successfully
+INFO: GL: NPOT textures extension detected, full NPOT textures supported
+INFO: GL: DXT compressed textures supported
+INFO: GL: ETC2/EAC compressed textures supported
+INFO: PLATFORM: DESKTOP (GLFW - Win32): Initialized successfully
+INFO: TEXTURE: [ID 1] Texture loaded successfully (1x1 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 1] Default texture loaded successfully
+INFO: SHADER: [ID 1] Vertex shader compiled successfully
+INFO: SHADER: [ID 2] Fragment shader compiled successfully
+INFO: SHADER: [ID 3] Program shader loaded successfully
+INFO: SHADER: [ID 3] Default shader loaded successfully
+INFO: RLGL: Render batch vertex buffers loaded successfully in RAM (CPU)
+INFO: RLGL: Render batch vertex buffers loaded successfully in VRAM (GPU)
+INFO: RLGL: Default OpenGL state initialized successfully
+INFO: TEXTURE: [ID 2] Texture loaded successfully (128x128 | GRAY_ALPHA | 1 mipmaps)
+INFO: FONT: Default font loaded successfully (224 glyphs)
+INFO: SYSTEM: Working Directory: C:\Users\User\source\repos\TowerDefense2D
+INFO: TIMER: Target time per frame: 16.667 milliseconds
+INFO: FILEIO: [C:/Windows/Fonts/segoeui.ttf] File loaded successfully
+INFO: TEXTURE: [ID 3] Texture loaded successfully (512x512 | GRAY_ALPHA | 1 mipmaps)
+INFO: FONT: Data loaded successfully (40 pixel size | 111 glyphs)
+INFO: FILEIO: [C:/Windows/Fonts/georgia.ttf] File loaded successfully
+INFO: TEXTURE: [ID 4] Texture loaded successfully (1024x512 | GRAY_ALPHA | 1 mipmaps)
+INFO: FONT: Data loaded successfully (64 pixel size | 111 glyphs)
+INFO: FILEIO: [assets/fonts/Inter-Regular.ttf] File loaded successfully
+INFO: TEXTURE: [ID 5] Texture loaded successfully (512x512 | GRAY_ALPHA | 1 mipmaps)
+INFO: FONT: Data loaded successfully (40 pixel size | 111 glyphs)
+INFO: TEXTURE: [ID 3] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [assets/fonts/Cinzel-Bold.ttf] File loaded successfully
+INFO: TEXTURE: [ID 3] Texture loaded successfully (1024x512 | GRAY_ALPHA | 1 mipmaps)
+INFO: FONT: Data loaded successfully (64 pixel size | 111 glyphs)
+INFO: TEXTURE: [ID 4] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [assets/fonts/Inter-SemiBold.ttf] File loaded successfully
+INFO: TEXTURE: [ID 4] Texture loaded successfully (512x512 | GRAY_ALPHA | 1 mipmaps)
+INFO: FONT: Data loaded successfully (40 pixel size | 111 glyphs)
+INFO: TEXTURE: [ID 6] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 1] Depth renderbuffer loaded successfully (32 bits)
+INFO: FBO: [ID 1] Framebuffer object created successfully
+INFO: TEXTURE: [ID 6] Pixel data retrieved successfully
+INFO: TEXTURE: [ID 7] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: FBO: [ID 1] Unloaded framebuffer from VRAM (GPU)
+INFO: TEXTURE: [ID 6] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 1] Depth renderbuffer loaded successfully (32 bits)
+INFO: FBO: [ID 1] Framebuffer object created successfully
+INFO: TEXTURE: [ID 6] Pixel data retrieved successfully
+INFO: TEXTURE: [ID 8] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: FBO: [ID 1] Unloaded framebuffer from VRAM (GPU)
+INFO: TEXTURE: [ID 6] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 1] Depth renderbuffer loaded successfully (32 bits)
+INFO: FBO: [ID 1] Framebuffer object created successfully
+INFO: TEXTURE: [ID 6] Pixel data retrieved successfully
+INFO: TEXTURE: [ID 9] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: FBO: [ID 1] Unloaded framebuffer from VRAM (GPU)
+INFO: TEXTURE: [ID 6] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 1] Depth renderbuffer loaded successfully (32 bits)
+INFO: FBO: [ID 1] Framebuffer object created successfully
+INFO: TEXTURE: [ID 6] Pixel data retrieved successfully
+INFO: TEXTURE: [ID 10] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: FBO: [ID 1] Unloaded framebuffer from VRAM (GPU)
+INFO: TEXTURE: [ID 6] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 1] Depth renderbuffer loaded successfully (32 bits)
+INFO: FBO: [ID 1] Framebuffer object created successfully
+INFO: TEXTURE: [ID 6] Pixel data retrieved successfully
+INFO: TEXTURE: [ID 11] Texture loaded successfully (128x128 | R8G8B8A8 | 1 mipmaps)
+INFO: FBO: [ID 1] Unloaded framebuffer from VRAM (GPU)
+INFO: FILEIO: [assets/figma/basic.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (192x224 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 6] Texture loaded successfully (192x224 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 7] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [assets/figma/long.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (192x256 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 7] Texture loaded successfully (192x256 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 8] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [assets/figma/castle.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (360x344 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 8] Texture loaded successfully (360x344 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 11] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [assets/figma/enemy.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (96x112 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 11] Texture loaded successfully (96x112 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 10] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [assets/figma/tree.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (208x244 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 10] Texture loaded successfully (208x244 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 9] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [assets/figma/pine.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (168x252 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 9] Texture loaded successfully (168x252 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/rock.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (132x88 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 12] Texture loaded successfully (132x88 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-shield.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 13] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-coin.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 14] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-wave.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 15] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-tower.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 16] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-pause.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 17] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-info.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 18] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-valid.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 19] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-invalid.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 20] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-arrow.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 21] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/icon-warning.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 22] Texture loaded successfully (48x48 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/cursor-build.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (56x68 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 23] Texture loaded successfully (56x68 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/trim-button.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (288x88 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 24] Texture loaded successfully (288x88 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/trim-hud.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (2464x152 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 25] Texture loaded successfully (2464x152 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/trim-sidebar.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (656x1080 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 26] Texture loaded successfully (656x1080 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/ground.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (888x540 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 27] Texture loaded successfully (888x540 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/figma/foliage.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (888x540 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 28] Texture loaded successfully (888x540 | R8G8B8A8 | 1 mipmaps)
+INFO: ASSET: 23/23 texturas originales de Figma cargadas
+INFO: FILEIO: [C:\Users\User\source\repos\TowerDefense2D/docs/evidence/visual/06-rendimiento.png] File saved successfully
+INFO: FILEIO: [C:\Users\User\source\repos\TowerDefense2D/docs/evidence/visual/06-rendimiento.png] Image exported successfully
+INFO: SYSTEM: [C:\Users\User\source\repos\TowerDefense2D/docs/evidence/visual/06-rendimiento.png] Screenshot taken successfully
+BENCHMARK 1800 frames, min entities 83, mean FPS 59.7141, p99 ms 17.2678
+INFO: TEXTURE: [ID 10] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 6] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 18] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 9] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 11] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 7] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 8] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 16] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 12] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 13] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 14] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 15] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 17] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 19] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 20] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 21] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 22] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 27] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 23] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 28] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 24] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 25] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 26] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 5] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 3] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 4] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 2] Unloaded texture data from VRAM (GPU)
+INFO: SHADER: [ID 3] Default shader unloaded successfully
+INFO: TEXTURE: [ID 1] Default texture unloaded successfully
+INFO: Window closed successfully
