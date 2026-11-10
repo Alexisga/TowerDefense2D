@@ -1,0 +1,6 @@
+{
+  "frames": 1800, "min_entities": 83,
+  "mean_frame_ms": 16.7465, "mean_fps": 59.7141,
+  "p95_frame_ms": 16.7883, "p99_frame_ms": 17.2678,
+  "max_frame_ms": 97.5616, "max_update_draw_cpu_ms": 7.9548
+}
